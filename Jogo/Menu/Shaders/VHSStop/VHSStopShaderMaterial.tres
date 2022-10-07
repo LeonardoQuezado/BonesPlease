@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[ext_resource path="res://Menu/Shaders/VHSStop/VHSStopShader.gdshader" type="Shader" id=1]
+
+[resource]
+shader = ExtResource( 1 )
+shader_param/shake_amount_x = 250.0
+shader_param/shake_amount_y = 400.0
+shader_param/white_hlines = 50.0
+shader_param/white_vlines = 80.0
