@@ -110,3 +110,8 @@ func _on_VolumeSlider_value_changed(value):
 # Botão super secreto.
 func _on_SuperSecretButton_pressed():
 	get_tree().quit()
+	
+# Desativa o som de "TVStatic" se estiver tocando (bug).
+func _physics_process(delta):
+	if $Background/Animation/RateVerticalContainer/TVStatic.playing:
+		$Background/Animation/RateVerticalContainer/TVStatic.stop()
