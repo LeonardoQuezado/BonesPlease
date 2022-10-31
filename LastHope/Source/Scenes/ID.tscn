@@ -1,0 +1,618 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Source/Images/white-texture-rounded.png" type="Texture" id=1]
+[ext_resource path="res://Source/Images/game_hospital_logo.png" type="Texture" id=2]
+[ext_resource path="res://Source/Themes/HeartRateTheme.tres" type="Theme" id=3]
+[ext_resource path="res://Source/Scripts/ID.gd" type="Script" id=4]
+[ext_resource path="res://Source/Shaders/Pixelated/PixelatedShaderMaterial.tres" type="Material" id=5]
+
+[node name="ID" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="CardNineRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -90.0
+margin_top = -50.0
+margin_right = 90.0
+margin_bottom = 50.0
+mouse_filter = 0
+texture = ExtResource( 1 )
+
+[node name="IDControl" type="Control" parent="CardNineRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="PatientPicture" type="TextureRect" parent="CardNineRect/IDControl"]
+material = ExtResource( 5 )
+margin_left = 10.0
+margin_top = 10.0
+margin_right = 55.0
+margin_bottom = 55.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BarCode" type="Control" parent="CardNineRect/IDControl"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -80.0
+margin_top = -39.0
+margin_right = -35.0
+margin_bottom = -27.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Line2D" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 1.5, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D5" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 6.7, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D2" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 3, 0 )
+scale = Vector2( 0.5, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D4" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 7, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D3" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 4.5, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D6" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 1.5, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D7" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 6.7, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D12" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 9.74, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D13" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 11.567, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D16" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 16.021, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D17" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 18.05, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D26" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 34.196, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D18" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 20.356, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D21" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 25.402, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D33" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 42.843, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D25" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 31.697, 0 )
+scale = Vector2( 0.749998, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D8" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 3, 0 )
+scale = Vector2( 0.5, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D11" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 8.263, 0 )
+scale = Vector2( 0.5, 1 )
+points = PoolVector2Array( 0, 46, 0, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D9" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 7, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D15" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 16.206, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D19" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 24.241, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D24" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 31.383, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D29" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 39.013, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D30" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 40.659, 0 )
+scale = Vector2( 0.500004, 1 )
+points = PoolVector2Array( -3.99994, 46, -3.99994, 51, -3.99994, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D10" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 4.5, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D14" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 13.521, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D20" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 23.939, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D31" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 40.33, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D32" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 41.39, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D34" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 44.791, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D22" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 27.383, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D23" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 28.363, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D27" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 30.884, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="Line2D28" type="Line2D" parent="CardNineRect/IDControl/BarCode"]
+position = Vector2( 36.01, 0 )
+scale = Vector2( 0.25, 1 )
+points = PoolVector2Array( -2, 46, -2, 50, -2, 55 )
+width = 2.0
+default_color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_group_": true,
+"_edit_lock_": true
+}
+
+[node name="HospitalLogo" type="TextureRect" parent="CardNineRect/IDControl"]
+margin_left = 137.0
+margin_top = 57.0
+margin_right = 177.0
+margin_bottom = 97.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 60.0
+margin_top = 13.0
+margin_right = 136.0
+margin_bottom = 27.0
+theme = ExtResource( 3 )
+text = "Nome do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientName" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 61.0
+margin_top = 24.0
+margin_right = 170.0
+margin_bottom = 38.0
+theme = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientLine" type="Line2D" parent="CardNineRect/IDControl"]
+position = Vector2( -422, -236 )
+points = PoolVector2Array( 482, 271, 592, 271 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AgeLabel" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 61.0
+margin_top = 38.0
+margin_right = 86.0
+margin_bottom = 52.0
+theme = ExtResource( 3 )
+text = "Idade"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientAge" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 66.0
+margin_top = 47.0
+margin_right = 79.0
+margin_bottom = 58.0
+theme = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AgeLine" type="Line2D" parent="CardNineRect/IDControl"]
+position = Vector2( -52, -214 )
+scale = Vector2( 0.232759, 1 )
+points = PoolVector2Array( 482, 271, 596, 271 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BloodLabel" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 104.0
+margin_top = 38.0
+margin_right = 170.0
+margin_bottom = 52.0
+theme = ExtResource( 3 )
+text = "Tipo Sanguíneo"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBlood" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 131.0
+margin_top = 47.0
+margin_right = 149.0
+margin_bottom = 58.0
+theme = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BloodLine" type="Line2D" parent="CardNineRect/IDControl"]
+position = Vector2( -171.444, -214 )
+scale = Vector2( 0.573608, 1 )
+points = PoolVector2Array( 482, 271, 596, 271 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DateLabel" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 59.0
+margin_top = 68.0
+margin_right = 99.0
+margin_bottom = 82.0
+theme = ExtResource( 3 )
+text = "Validade"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientDate" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 59.0
+margin_top = 77.0
+margin_right = 100.0
+margin_bottom = 88.0
+theme = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DateLine" type="Line2D" parent="CardNineRect/IDControl"]
+position = Vector2( -459, -184 )
+points = PoolVector2Array( 520, 271, 553, 271 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SexLabel" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 105.0
+margin_top = 68.0
+margin_right = 126.0
+margin_bottom = 82.0
+theme = ExtResource( 3 )
+text = "Sexo"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientSex" type="Label" parent="CardNineRect/IDControl"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 111.0
+margin_top = 76.0
+margin_right = 119.0
+margin_bottom = 87.0
+theme = ExtResource( 3 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SexLine" type="Line2D" parent="CardNineRect/IDControl"]
+position = Vector2( -191.571, -184 )
+scale = Vector2( 0.571429, 1 )
+points = PoolVector2Array( 520, 271, 553, 271 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="mouse_entered" from="CardNineRect" to="." method="_on_CardNineRect_mouse_entered"]
+[connection signal="mouse_exited" from="CardNineRect" to="." method="_on_CardNineRect_mouse_exited"]

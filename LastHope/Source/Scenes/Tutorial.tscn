@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Source/Shaders/GrayScale/GrayScaleShaderMaterial.tres" type="Material" id=1]
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Shaders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScaleShaderControl" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScaleShaderBuffer" type="BackBufferCopy" parent="Shaders/GrayScaleShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScaleShaderRect" type="ColorRect" parent="Shaders/GrayScaleShaderControl"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
