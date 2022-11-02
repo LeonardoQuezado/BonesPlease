@@ -107,6 +107,30 @@ tracks/6/keys = {
 "update": 1,
 "values": [ false ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath("Animation/RateVerticalContainer/Rate:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 3 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Animation/RateVerticalContainer/Trail:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 20 ) ]
+}
 
 [sub_resource type="Animation" id=6]
 resource_name = "change_to_exit"
@@ -375,6 +399,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 9 )
 script = ExtResource( 18 )
+__meta__ = {
+"_edit_lock_": true
+}
 is_menu_active = true
 
 [node name="Background" type="Control" parent="."]
@@ -425,12 +452,10 @@ __meta__ = {
 }
 
 [node name="Rate" type="Sprite" parent="Background/Animation/RateVerticalContainer"]
+position = Vector2( 0, 3 )
 scale = Vector2( 0.03, 0.03 )
 texture = ExtResource( 6 )
 script = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="Trail" parent="Background/Animation/RateVerticalContainer" instance=ExtResource( 19 )]
 position = Vector2( 0, 20 )
@@ -440,7 +465,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 target_path = NodePath("../Rate")
-trail_length = 32
 
 [node name="MonitorBeep" type="AudioStreamPlayer" parent="Background/Animation/RateVerticalContainer"]
 stream = ExtResource( 10 )
@@ -514,30 +538,33 @@ __meta__ = {
 }
 
 [node name="OptionsHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_top = 81.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -512.0
+margin_top = 70.0
+margin_right = 512.0
+margin_bottom = 380.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="OptionsVerticalContainer" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer"]
-margin_left = 423.0
-margin_right = 601.0
-margin_bottom = 460.0
+[node name="OptionsVerticalContainerLeft" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer"]
+margin_left = 346.0
+margin_right = 528.0
+margin_bottom = 310.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FullScreenCheckBoxHorizontalContaier" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer"]
-margin_right = 178.0
+[node name="FullScreenCheckBoxHorizontalContaier" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft"]
+margin_right = 182.0
 margin_bottom = 39.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FullScreenText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/FullScreenCheckBoxHorizontalContaier"]
+[node name="FullScreenText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier"]
 margin_right = 143.0
 margin_bottom = 39.0
 text = "Tela Cheia"
@@ -546,23 +573,32 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="FullScreenCheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/FullScreenCheckBoxHorizontalContaier"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier"]
 margin_left = 147.0
-margin_right = 171.0
+margin_right = 154.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 7, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FullScreenCheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier"]
+margin_left = 158.0
+margin_right = 182.0
 margin_bottom = 39.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BordelessCheckBoxHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer"]
+[node name="BordelessCheckBoxHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft"]
 margin_top = 43.0
-margin_right = 178.0
+margin_right = 182.0
 margin_bottom = 82.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BordelessText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BordelessCheckBoxHorizontalContainer"]
+[node name="BordelessText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer"]
 margin_right = 150.0
 margin_bottom = 39.0
 text = "Sem Borda"
@@ -571,46 +607,130 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BordelessCheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BordelessCheckBoxHorizontalContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer"]
 margin_left = 154.0
-margin_right = 178.0
+margin_right = 154.0
 margin_bottom = 39.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="VolumeTextHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer"]
-margin_top = 86.0
-margin_right = 178.0
-margin_bottom = 117.0
+[node name="BordelessCheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer"]
+margin_left = 158.0
+margin_right = 182.0
+margin_bottom = 39.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="VolumeText" type="Label" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/VolumeTextHorizontalContainer"]
-margin_right = 97.0
-margin_bottom = 31.0
-text = "Volume"
+[node name="OptionsVerticalContainerRight" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer"]
+margin_left = 532.0
+margin_right = 677.0
+margin_bottom = 310.0
+rect_min_size = Vector2( 0, 100 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="VolumeSlider" type="HSlider" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer"]
-margin_top = 121.0
-margin_right = 178.0
-margin_bottom = 137.0
-min_value = -30.0
-max_value = 0.0
+[node name="VsyncCheckBoxHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight"]
+margin_right = 145.0
+margin_bottom = 39.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BackButton" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer"]
-margin_top = 141.0
-margin_right = 178.0
-margin_bottom = 178.0
+[node name="VsyncText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer"]
+margin_right = 88.0
+margin_bottom = 39.0
+text = "Vsync"
+flat = true
+align = 0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer"]
+margin_left = 92.0
+margin_right = 117.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 25, 0 )
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VsyncCheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer"]
+margin_left = 121.0
+margin_right = 145.0
+margin_bottom = 39.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FXAACheckBoxHorizontalContainer" type="HBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight"]
+margin_top = 43.0
+margin_right = 145.0
+margin_bottom = 82.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FXAAText" type="Button" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer"]
+margin_right = 80.0
+margin_bottom = 39.0
+text = "FXAA"
+flat = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer"]
+margin_left = 84.0
+margin_right = 117.0
+margin_bottom = 39.0
+rect_min_size = Vector2( 33, 0 )
+
+[node name="FXAACheckBox" type="CheckBox" parent="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer"]
+margin_left = 121.0
+margin_right = 145.0
+margin_bottom = 39.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackButton" type="Button" parent="Texts/OptionsTexts"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -91.0
+margin_top = 220.0
+margin_right = 91.0
+margin_bottom = 37.0
 text = "Voltar"
 flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VolumeText" type="Label" parent="Texts/OptionsTexts"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -48.5
+margin_top = 160.0
+margin_right = 48.5
+margin_bottom = 31.0
+text = "Volume"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VolumeSlider" type="HSlider" parent="Texts/OptionsTexts"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -100.0
+margin_top = 190.0
+margin_right = 100.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 100, 0 )
+min_value = -30.0
+max_value = 0.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -932,12 +1052,16 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/FullScreenCheckBoxHorizontalContaier/FullScreenText" to="." method="_on_FullScreenText_pressed"]
-[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/FullScreenCheckBoxHorizontalContaier/FullScreenCheckBox" to="." method="_on_FullScreenCheckBox_pressed"]
-[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BordelessCheckBoxHorizontalContainer/BordelessText" to="." method="_on_BordelessText_pressed"]
-[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BordelessCheckBoxHorizontalContainer/BordelessCheckBox" to="." method="_on_BordelessCheckBox_pressed"]
-[connection signal="value_changed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
-[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier/FullScreenText" to="." method="_on_FullScreenText_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier/FullScreenCheckBox" to="." method="_on_FullScreenCheckBox_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer/BordelessText" to="." method="_on_BordelessText_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer/BordelessCheckBox" to="." method="_on_BordelessCheckBox_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer/VsyncText" to="." method="_on_VsyncText_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer/VsyncCheckBox" to="." method="_on_VsyncCheckBox_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer/FXAAText" to="." method="_on_FXAAText_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer/FXAACheckBox" to="." method="_on_FXAACheckBox_pressed"]
+[connection signal="pressed" from="Texts/OptionsTexts/BackButton" to="." method="_on_BackButton_pressed"]
+[connection signal="value_changed" from="Texts/OptionsTexts/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

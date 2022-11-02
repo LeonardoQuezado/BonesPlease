@@ -82,7 +82,7 @@ func _on_FullScreenCheckBox_pressed():
 # Acionado quando o texto de FullScreen for pressionado.
 func _on_FullScreenText_pressed():
 	OS.window_fullscreen = not OS.window_fullscreen
-	var check_box = $Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/FullScreenCheckBoxHorizontalContaier/FullScreenCheckBox
+	var check_box = $Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/FullScreenCheckBoxHorizontalContaier/FullScreenCheckBox
 	check_box.pressed = not check_box.pressed
 
 # Acionado quando a "checkbox" de Bordeless for pressionada.
@@ -92,8 +92,28 @@ func _on_BordelessCheckBox_pressed():
 # Acinado quando o texto do Bordeless for pressinado.
 func _on_BordelessText_pressed():
 	OS.window_borderless = not OS.window_borderless
-	var check_box =	$Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainer/BordelessCheckBoxHorizontalContainer/BordelessCheckBox
+	var check_box =	$Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerLeft/BordelessCheckBoxHorizontalContainer/BordelessCheckBox
 	check_box.pressed = not check_box.pressed
+
+# Acionado quando a "checkbox" de Vsync for pressionada.
+func _on_VsyncCheckBox_pressed():
+	OS.set_use_vsync(not OS.is_vsync_enabled())
+
+# Acinado quando o texto do Vsync for pressionado.
+func _on_VsyncText_pressed():
+	OS.set_use_vsync(not OS.is_vsync_enabled())
+	var check_box = $Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/VsyncCheckBoxHorizontalContainer/VsyncCheckBox
+	check_box.pressed = not check_box.pressed
+
+# Acionado quando o texto do FXAA for pressionado.
+func _on_FXAAText_pressed():
+	ProjectSettings.set_setting("rendering/quality/filters/use_fxaa", not ProjectSettings.get_setting("rendering/quality/filters/use_fxaa"))
+	var check_box = $Texts/OptionsTexts/OptionsHorizontalContainer/OptionsVerticalContainerRight/FXAACheckBoxHorizontalContainer/FXAACheckBox
+	check_box.pressed = not check_box.pressed
+
+# Acionado quando a "checkbox" do FXAA for pressionada.
+func _on_FXAACheckBox_pressed():
+	ProjectSettings.set_setting("rendering/quality/filters/use_fxaa", not ProjectSettings.get_setting("rendering/quality/filters/use_fxaa"))
 
 # Volta para o Menu principal.
 func _on_BackButton_pressed():

@@ -58,11 +58,25 @@ func _has_reached_boundaries():
 
 # Olha se pode fazer o "beep" do monitor para baixo.
 func _can_beep_down():
+	# Lado esquerdo da tela.
+	var window_left_side = self.width / 3
+	
+	# "Range" em que o "beep down" pode ser feito.
+	var left_min_range = int(window_left_side / self.x_speed) * self.x_speed
+	var left_max_range = int((window_left_side + self.x_speed) / self.x_speed) * self.x_speed
+	
+	# Lado direito da tela.
+	var window_right_side = self.width / 1.5
+	
+	# "Range" em que o "beep down" pode ser feito.
+	var right_min_range = int(window_right_side / self.x_speed) * self.x_speed
+	var right_max_range = int((window_right_side + self.x_speed) / self.x_speed) * self.x_speed
+	
 	return (
-		round(self.width / 3) <= self.position.x and self.position.x <= round(self.width / 3 + self.x_speed)
+		left_min_range <= self.position.x and self.position.x <= left_max_range
 		or
-		round(self.width / 1.5) <= self.position.x and self.position.x <= round(self.width / 1.5 + self.x_speed)
-		)
+		right_min_range <= self.position.x and self.position.x <= right_max_range
+	)
 
 # Faz o "beep" do monitor para baixo.
 func _beep_down():
@@ -70,11 +84,25 @@ func _beep_down():
 
 # Olha se pode fazer o "beep" do monitor para cima.
 func _can_beep_up():
+	# Lado esquerdo da tela.
+	var window_left_side = self.width / 3
+	
+	# "Range" em que o "beep up" pode ser feito.
+	var left_min_range = int((window_left_side + self.x_speed) / self.x_speed) * self.x_speed
+	var left_max_range = int((window_left_side + (self.x_speed * 2)) / self.x_speed) * self.x_speed
+	
+	# Lado direito da tela.
+	var window_right_side = self.width / 1.5
+	
+	# "Range" em que o "beep up" pode ser feito.
+	var right_min_range = int(window_right_side / self.x_speed) * self.x_speed
+	var right_max_range = int((window_right_side + (self.x_speed * 2)) / self.x_speed) * self.x_speed
+	
 	return (
-		round(self.width / 3 + self.x_speed) <= self.position.x and self.position.x <= round(self.width / 3 + self.x_speed * 2)
+		left_min_range <= self.position.x and self.position.x <= left_max_range
 		or
-		round(self.width / 1.5 + self.x_speed) <= self.position.x and self.position.x <= round(self.width / 1.5 + self.x_speed * 2)
-		)
+		right_min_range <= self.position.x and self.position.x <= right_max_range
+	)
 
 # Faz o "beep" do monitor para cima.
 func _beep_up():
@@ -83,11 +111,25 @@ func _beep_up():
 
 # Retorna a posição original.
 func _no_beep():
+	# Lado esquerdo da tela.
+	var window_left_side = self.width / 3
+	
+	# "Range" em que o "no beep" pode ser feito.
+	var left_min_range = int((window_left_side + (self.x_speed * 2)) / self.x_speed) * self.x_speed
+	var left_max_range = int((window_left_side + (self.x_speed * 3)) / self.x_speed) * self.x_speed
+	
+	# Lado direito da tela.
+	var window_right_side = self.width / 1.5
+	
+	# "Range" em que o "no beep" pode ser feito.
+	var right_min_range = int(window_right_side / (self.x_speed * 2)) * self.x_speed
+	var right_max_range = int((window_right_side + (self.x_speed * 3)) / self.x_speed) * self.x_speed
+	
 	return (
-		round(self.width / 3 + self.x_speed * 2) <= self.position.x and self.position.x <= round(self.width / 3 + self.x_speed * 3)
+		left_min_range <= self.position.x and self.position.x <= left_max_range
 		or
-		round(self.width / 1.5 + self.x_speed * 2) <= self.position.x and self.position.x <= round(self.width / 1.5 + self.x_speed * 3)
-		)
+		right_min_range <= self.position.x and self.position.x <= right_max_range
+	)
 
 # Retorna a posição original.
 func _beep_origin():
@@ -131,7 +173,10 @@ func _physics_process(delta):
 	# Atualiza a resolução da tela a cada frame.
 	self.width = self.get_viewport().size.x
 	self.height = self.get_viewport().size.y
-		
+	
+	# Ajusta o tamanho da "cauda" conforme a largura da janela.
+	self.trail_length = sqrt(sqrt(self.width)) * 3
+
 	# Atualiza a velocidade de deslocamento no eixo "x".
 	self._update_x_speed()
 		
