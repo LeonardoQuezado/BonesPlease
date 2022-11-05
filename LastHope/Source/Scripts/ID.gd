@@ -1,7 +1,9 @@
-extends Control
+extends RigidBody2D
 
-# Se o mouse está acima do "cartão".
-var hover = false
+signal clicked
+
+# Se o cartão está sendo segurado.
+var held = false
 
 # Exporta a variável "patient_name" (o nome do paciente).
 export(String) var patient_name
@@ -23,13 +25,6 @@ var dir = Directory.new()
 
 # Inicializa o "File".
 var txt_file = File.new()
-
-func _notification(what):
-	match what:
-		# Caso o mouse saia da janela do jogo, o mesmo não
-		# deixará que o usuário arraste o "cartão".
-		MainLoop.NOTIFICATION_WM_MOUSE_EXIT:
-			self.hover = false
 
 # Escolhe uma imagem e um nome aleatório.
 func gen_random_persona():
@@ -80,8 +75,8 @@ func gen_random_persona():
 	
 	# Atribui o gênero escolhido.
 	$CardNineRect/IDControl/PatientSex.text = target_folder[0].capitalize()
-	
-# Called when the node enters the scene tree for the first time.
+
+# Executada quando a cena é instanciada.
 func _ready():
 	self.rng.randomize()
 	
@@ -103,25 +98,28 @@ func _ready():
 	# Atributi a validade ao "ID".
 	$CardNineRect/IDControl/PatientDate.text = "%02d/%02d/%02d" % [day, month, year]
 
-# Move, caso o mouse esteja acima do "cartão" e com o botão esquerdo
-# pressionado, o "cartão" para a posição do mouse.
-func _physics_process(delta):
-	# Move o "cartão" para a posição do mouse.
-	if self.hover and Input.is_action_pressed("click"):
-		$CardNineRect.set_position(
-			$CardNineRect.rect_global_position.linear_interpolate(
-				self.get_global_mouse_position(),
-				delta * 6.0
-			)
-		)
-	
+func _input_event(_viewport, event, _shape_idx):
+	if event is InputEventMouseButton:
+		if event.button_index == BUTTON_LEFT and event.pressed:
+			emit_signal("clicked", self)
 
-# Altera o valor de "hover" indicando que o "cartão" pode ser arrastando
-# quando o mouse entrar na região do "cartão". 
-func _on_CardNineRect_mouse_entered():
-	self.hover = true
+# Move o cartão se o mesmo for pego.
+func _physics_process(_delta):
+	# Remove a gravidade.
+	gravity_scale = 0
+	if held:
+		global_transform.origin = get_global_mouse_position()
 
-# Altera o valor de "hover" indicando que o "cartão" pode ser arrastando
-# quando o mouse entrar na região do "cartão". 
-func _on_CardNineRect_mouse_exited():
-	self.hover = false
+# Indica que o cartão foi pego.
+func pickup():
+	if held:
+		return
+	mode = RigidBody2D.MODE_STATIC
+	held = true
+
+# Indica que o cartão foi solto.
+func drop(impulse=Vector2.ZERO):
+	if held:
+		mode = RigidBody2D.MODE_CHARACTER
+		apply_central_impulse(impulse)
+		held = false
