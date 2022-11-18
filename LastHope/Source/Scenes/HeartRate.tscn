@@ -110,15 +110,6 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BottomNameLine" type="Line2D" parent="UI"]
-position = Vector2( 0, -2 )
-points = PoolVector2Array( 10, 89, 170, 89 )
-width = 1.0
-default_color = Color( 1, 0, 0, 1 )
-__meta__ = {
-"_edit_lock_": true
-}
-
 [node name="NameLabel" type="Label" parent="UI"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 11.0
@@ -132,11 +123,19 @@ __meta__ = {
 }
 
 [node name="PatientName" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = 11.0
-margin_top = 74.0
-margin_right = 169.0
-margin_bottom = 87.0
+margin_top = 76.0
+margin_right = 132.0
+margin_bottom = 89.0
+theme = ExtResource( 5 )
 clip_text = true
+
+[node name="BottomNameLine" type="Line2D" parent="UI"]
+position = Vector2( 0, -2 )
+points = PoolVector2Array( 12, 89, 130, 89 )
+width = 1.0
+default_color = Color( 1, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true
 }

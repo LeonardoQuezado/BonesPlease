@@ -18,6 +18,7 @@ func _physics_process(delta):
 func _on_pickable_clicked(object):
 	if !held_object:
 		held_object = object
+		held_object.scale = Vector2(1.25, 1.25)
 		held_object.pickup()
 
 func _unhandled_input(event):
