@@ -25,8 +25,6 @@ func _ready():
 	self.rng.randomize()
 	self.temperature = self.rng.randf_range(36.0, 38.5)
 	$UI/PatientTemperature.text = "%.1f°C" % self.temperature
-	
-	print("TODO: Temperature.gd na cena do jogo, pegar o nome do paciente pelo 'ID'")
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

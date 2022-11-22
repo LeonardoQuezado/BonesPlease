@@ -175,7 +175,7 @@ func _physics_process(delta):
 	self.height = self.get_viewport().size.y
 	
 	# Ajusta o tamanho da "cauda" conforme a largura da janela.
-	self.trail_length = sqrt(sqrt(self.width)) * 3
+	self.trail_length = sqrt(sqrt(self.width))
 
 	# Atualiza a velocidade de deslocamento no eixo "x".
 	self._update_x_speed()

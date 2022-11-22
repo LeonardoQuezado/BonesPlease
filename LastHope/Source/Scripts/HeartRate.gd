@@ -25,8 +25,6 @@ func _ready():
 	self.rng.randomize()
 	self.heart_bpm = self.rng.randi_range(40, 120)
 	$UI/HeartRate.text = "%03d" % self.heart_bpm
-	
-	print("TODO: HeartRate.gd na cena do jogo, pegar o nome do paciente pelo 'ID'")
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

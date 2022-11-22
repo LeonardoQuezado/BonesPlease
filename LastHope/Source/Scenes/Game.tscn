@@ -1,0 +1,628 @@
+[gd_scene load_steps=19 format=2]
+
+[ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
+[ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
+[ext_resource path="res://Source/Shaders/VHS/VHSShaderMaterial.tres" type="Material" id=3]
+[ext_resource path="res://Source/Images/BackgroundGridStatic.jpg" type="Texture" id=4]
+[ext_resource path="res://Source/Images/SceneChangeStatic.jpg" type="Texture" id=5]
+[ext_resource path="res://Source/Shaders/TV/TVShaderMaterial.tres" type="Material" id=6]
+[ext_resource path="res://Source/Sounds/TV_Static.wav" type="AudioStream" id=7]
+[ext_resource path="res://Source/Themes/MenuTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Source/Shaders/Sharpness/SharpnessShaderMaterial.tres" type="Material" id=9]
+[ext_resource path="res://Source/Sounds/Static.wav" type="AudioStream" id=10]
+[ext_resource path="res://Source/Shaders/GrayScale/GrayScaleShaderMaterial.tres" type="Material" id=11]
+[ext_resource path="res://Source/Scenes/HeartRate.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Source/Scenes/ID.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Source/Scripts/Pause.gd" type="Script" id=14]
+[ext_resource path="res://Source/Scenes/Temperature.tscn" type="PackedScene" id=15]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 6.66875 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FADE"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TVStatic:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.05 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Static:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "RESET"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TVStatic:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Static:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="HUD" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Borders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Top" type="Control" parent="Borders"]
+anchor_right = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopBorderBody" type="StaticBody2D" parent="Borders/Top"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopBorderCollision" type="CollisionShape2D" parent="Borders/Top/TopBorderBody"]
+position = Vector2( 0, -6650 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Left" type="Control" parent="Borders"]
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LeftBorderBody" type="StaticBody2D" parent="Borders/Left"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LeftBorderCollision" type="CollisionShape2D" parent="Borders/Left/LeftBorderBody"]
+position = Vector2( -9980, 0 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Right" type="Control" parent="Borders"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RightBorderBody" type="StaticBody2D" parent="Borders/Right"]
+position = Vector2( -1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RightBorderCollision" type="CollisionShape2D" parent="Borders/Right/RightBorderBody"]
+position = Vector2( 11000, 0 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Bottom" type="Control" parent="Borders"]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomBorderBody" type="StaticBody2D" parent="Borders/Bottom"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomBorderCollision" type="CollisionShape2D" parent="Borders/Bottom/BottomBorderBody"]
+position = Vector2( 0, 7250 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HeartRate" parent="." instance=ExtResource( 12 )]
+position = Vector2( 146, 102 )
+
+[node name="ID" parent="." instance=ExtResource( 13 )]
+position = Vector2( 857, 106 )
+continuous_cd = 1
+
+[node name="Temperature" parent="." instance=ExtResource( 15 )]
+position = Vector2( 474, 189 )
+
+[node name="Pause" type="Node" parent="."]
+pause_mode = 2
+script = ExtResource( 14 )
+
+[node name="TextureRect" type="TextureRect" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundFocus" type="TextureRect" parent="Pause"]
+visible = false
+modulate = Color( 1, 1, 1, 0.25098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundAjust" type="ColorRect" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Menu" type="Control" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Pause/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.0
+margin_top = -103.5
+margin_right = 139.0
+margin_bottom = 103.5
+mouse_filter = 0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Pause/Menu/VerticalContainer"]
+margin_right = 278.0
+margin_bottom = 31.0
+theme = ExtResource( 8 )
+text = "Jogo Pausado"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="Pause/Menu/VerticalContainer"]
+margin_top = 35.0
+margin_right = 278.0
+margin_bottom = 49.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Continue" type="Button" parent="Pause/Menu/VerticalContainer"]
+margin_top = 53.0
+margin_right = 278.0
+margin_bottom = 90.0
+theme = ExtResource( 8 )
+text = "Continuar"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace2" type="Label" parent="Pause/Menu/VerticalContainer"]
+margin_top = 94.0
+margin_right = 278.0
+margin_bottom = 108.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Options" type="Button" parent="Pause/Menu/VerticalContainer"]
+margin_top = 112.0
+margin_right = 278.0
+margin_bottom = 149.0
+theme = ExtResource( 8 )
+text = "Opções"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace3" type="Label" parent="Pause/Menu/VerticalContainer"]
+margin_top = 153.0
+margin_right = 278.0
+margin_bottom = 167.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Exit" type="Button" parent="Pause/Menu/VerticalContainer"]
+margin_top = 171.0
+margin_right = 278.0
+margin_bottom = 208.0
+theme = ExtResource( 8 )
+text = "Voltar ao Menu"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Options" type="Control" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Pause/Options"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.5
+margin_top = -122.5
+margin_right = 74.5
+margin_bottom = 122.5
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Pause/Options/VerticalContainer"]
+margin_top = 41.0
+margin_right = 149.0
+margin_bottom = 72.0
+theme = ExtResource( 8 )
+text = "Opções"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="Pause/Options/VerticalContainer"]
+margin_top = 76.0
+margin_right = 149.0
+margin_bottom = 90.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Volume" type="Label" parent="Pause/Options/VerticalContainer"]
+margin_top = 94.0
+margin_right = 149.0
+margin_bottom = 125.0
+theme = ExtResource( 8 )
+text = "Volume"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VolumeSlider" type="HSlider" parent="Pause/Options/VerticalContainer"]
+margin_top = 129.0
+margin_right = 149.0
+margin_bottom = 145.0
+min_value = -30.0
+max_value = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace2" type="Label" parent="Pause/Options/VerticalContainer"]
+margin_top = 149.0
+margin_right = 149.0
+margin_bottom = 163.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Back" type="Button" parent="Pause/Options/VerticalContainer"]
+margin_top = 167.0
+margin_right = 149.0
+margin_bottom = 204.0
+theme = ExtResource( 8 )
+text = "Voltar"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ExitPopup" type="Control" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Pause/ExitPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -114.0
+margin_top = -36.0
+margin_right = 114.0
+margin_bottom = 36.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="Pause/ExitPopup/VerticalContainer"]
+margin_right = 228.0
+margin_bottom = 31.0
+theme = ExtResource( 8 )
+text = "Quer mesmo sair?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HorizontalContainer" type="HBoxContainer" parent="Pause/ExitPopup/VerticalContainer"]
+margin_top = 35.0
+margin_right = 228.0
+margin_bottom = 72.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Yes" type="Button" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 49.0
+margin_right = 108.0
+margin_bottom = 37.0
+theme = ExtResource( 8 )
+text = "Sim"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 112.0
+margin_top = 11.0
+margin_right = 112.0
+margin_bottom = 25.0
+text = "	"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="No" type="Button" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 116.0
+margin_right = 178.0
+margin_bottom = 37.0
+theme = ExtResource( 8 )
+text = "Não"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shaders" type="Control" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderControl" type="Control" parent="Pause/Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderBuffer" type="BackBufferCopy" parent="Pause/Shaders/VHSShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderRect" type="ColorRect" parent="Pause/Shaders/VHSShaderControl"]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderControl" type="Control" parent="Pause/Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderBuffer" type="BackBufferCopy" parent="Pause/Shaders/TVShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderRect" type="ColorRect" parent="Pause/Shaders/TVShaderControl"]
+material = ExtResource( 6 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MonitorFrame" type="TextureRect" parent="Pause"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 2 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Pause"]
+anims/FADE = SubResource( 3 )
+anims/RESET = SubResource( 2 )
+
+[node name="TVStatic" type="AudioStreamPlayer" parent="Pause"]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="Static" type="AudioStreamPlayer" parent="Pause"]
+stream = ExtResource( 10 )
+volume_db = -28.0
+pitch_scale = 1.05
+
+[node name="Shaders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScale" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScaleRect" type="ColorRect" parent="Shaders/GrayScale"]
+material = ExtResource( 11 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GrayScaleBuffer" type="BackBufferCopy" parent="Shaders/GrayScale"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SharpnessShaderControl" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SharpnessShaderBuffer" type="BackBufferCopy" parent="Shaders/SharpnessShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SharpnessShaderRect" type="ColorRect" parent="Shaders/SharpnessShaderControl"]
+material = ExtResource( 9 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[connection signal="pressed" from="Pause/Menu/VerticalContainer/Continue" to="Pause" method="_on_Continue_pressed"]
+[connection signal="pressed" from="Pause/Menu/VerticalContainer/Options" to="Pause" method="_on_Options_pressed"]
+[connection signal="pressed" from="Pause/Menu/VerticalContainer/Exit" to="Pause" method="_on_Exit_pressed"]
+[connection signal="value_changed" from="Pause/Options/VerticalContainer/VolumeSlider" to="Pause" method="_on_VolumeSlider_value_changed"]
+[connection signal="pressed" from="Pause/Options/VerticalContainer/Back" to="Pause" method="_on_Back_pressed"]
+[connection signal="pressed" from="Pause/ExitPopup/VerticalContainer/HorizontalContainer/Yes" to="Pause" method="_on_Yes_pressed"]
+[connection signal="pressed" from="Pause/ExitPopup/VerticalContainer/HorizontalContainer/No" to="Pause" method="_on_No_pressed"]
