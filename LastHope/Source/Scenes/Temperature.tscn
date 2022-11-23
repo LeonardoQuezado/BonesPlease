@@ -74,6 +74,7 @@ margin_top = 19.0
 margin_right = 172.0
 margin_bottom = 33.0
 theme = ExtResource( 3 )
+align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true,
@@ -92,7 +93,7 @@ __meta__ = {
 
 [node name="TemperatureLabel" type="Label" parent="UI"]
 modulate = Color( 0, 0, 0, 1 )
-anchor_left = 0.00013184
+anchor_left = 0.000131819
 anchor_top = -0.0568182
 anchor_right = 0.000131819
 anchor_bottom = -0.0568182

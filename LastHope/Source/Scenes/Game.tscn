@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
@@ -15,6 +15,8 @@
 [ext_resource path="res://Source/Scenes/ID.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Source/Scripts/Pause.gd" type="Script" id=14]
 [ext_resource path="res://Source/Scenes/Temperature.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Source/Scenes/Blood.tscn" type="PackedScene" id=16]
+[ext_resource path="res://Source/Scenes/Virus.tscn" type="PackedScene" id=17]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 6.66875 )
@@ -205,7 +207,13 @@ position = Vector2( 857, 106 )
 continuous_cd = 1
 
 [node name="Temperature" parent="." instance=ExtResource( 15 )]
-position = Vector2( 474, 189 )
+position = Vector2( 478, 112 )
+
+[node name="Virus" parent="." instance=ExtResource( 17 )]
+position = Vector2( 411, 272 )
+
+[node name="Blood" parent="." instance=ExtResource( 16 )]
+position = Vector2( 146, 268 )
 
 [node name="Pause" type="Node" parent="."]
 pause_mode = 2

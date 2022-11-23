@@ -478,6 +478,7 @@ margin_top = 24.0
 margin_right = 170.0
 margin_bottom = 38.0
 theme = ExtResource( 3 )
+align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -576,9 +577,11 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 59.0
 margin_top = 77.0
-margin_right = 100.0
+margin_right = 98.0
 margin_bottom = 88.0
 theme = ExtResource( 3 )
+text = "31/31/31"
+align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -586,7 +589,7 @@ __meta__ = {
 
 [node name="DateLine" type="Line2D" parent="CardNineRect/IDControl"]
 position = Vector2( -459, -184 )
-points = PoolVector2Array( 520, 271, 553, 271 )
+points = PoolVector2Array( 520, 271, 554, 271 )
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 __meta__ = {

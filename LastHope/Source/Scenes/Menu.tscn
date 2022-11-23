@@ -869,20 +869,20 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="NoButton" type="Button" parent="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer"]
-margin_right = 62.0
+[node name="YesButton" type="Button" parent="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer"]
+margin_right = 59.0
 margin_bottom = 37.0
-text = "Não"
+text = "Sim"
 flat = true
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="YesButton" type="Button" parent="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer"]
-margin_left = 66.0
+[node name="NoButton" type="Button" parent="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer"]
+margin_left = 63.0
 margin_right = 125.0
 margin_bottom = 37.0
-text = "Sim"
+text = "Não"
 flat = true
 __meta__ = {
 "_edit_lock_": true
@@ -1065,6 +1065,6 @@ __meta__ = {
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/OptionsButton" to="." method="_on_OptionsButton_pressed"]
 [connection signal="pressed" from="Texts/MenuTexts/MenuHorizontalContainer/MenuVerticalContainer/QuitButton" to="." method="_on_QuitButton_pressed"]
-[connection signal="pressed" from="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer/NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="pressed" from="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer/YesButton" to="." method="_on_YesButton_pressed"]
+[connection signal="pressed" from="Texts/ExitTexts/ExitHorizontalContainer/ExitVerticalContainer/ConfirmationButtonsContainer/NoButton" to="." method="_on_NoButton_pressed"]
 [connection signal="pressed" from="SuperSecretControl/SuperSecretButton" to="." method="_on_SuperSecretButton_pressed"]

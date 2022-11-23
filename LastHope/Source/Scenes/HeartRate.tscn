@@ -129,6 +129,7 @@ margin_top = 76.0
 margin_right = 132.0
 margin_bottom = 89.0
 theme = ExtResource( 5 )
+align = 1
 clip_text = true
 
 [node name="BottomNameLine" type="Line2D" parent="UI"]
