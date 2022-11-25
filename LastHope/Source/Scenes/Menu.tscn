@@ -382,6 +382,8 @@ tracks/4/keys = {
 
 [sub_resource type="DynamicFont" id=2]
 size = 32
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -392,6 +394,8 @@ font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
 font_data = ExtResource( 5 )
 
 [node name="Menu" type="Control"]
@@ -408,6 +412,15 @@ is_menu_active = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foreground" type="ColorRect" parent="Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -838,8 +851,8 @@ mouse_filter = 2
 theme = ExtResource( 9 )
 custom_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "[center]Sair ?[/center]"
-text = "Sair ?"
+bbcode_text = "[center]Quer mesmo sair ?[/center]"
+text = "Quer mesmo sair ?"
 __meta__ = {
 "_edit_lock_": true
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
@@ -17,9 +17,24 @@
 [ext_resource path="res://Source/Scenes/Temperature.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Source/Scenes/Blood.tscn" type="PackedScene" id=16]
 [ext_resource path="res://Source/Scenes/Virus.tscn" type="PackedScene" id=17]
+[ext_resource path="res://Source/Images/calendar.png" type="Texture" id=18]
+[ext_resource path="res://Source/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://Source/Images/hospital_background.png" type="Texture" id=20]
+[ext_resource path="res://Source/Images/checklist.png" type="Texture" id=21]
+[ext_resource path="res://Source/Scenes/Clock.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Source/Shaders/LensDistortion/LensDistortionShaderMaterial.tres" type="Material" id=23]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 6.66875 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 10012.5, 6740.5 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 32
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 19 )
 
 [sub_resource type="Animation" id=3]
 resource_name = "FADE"
@@ -48,18 +63,6 @@ tracks/1/keys = {
 "update": 1,
 "values": [ true, false ]
 }
-tracks/2/type = "value"
-tracks/2/path = NodePath("Static:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
 
 [sub_resource type="Animation" id=2]
 resource_name = "RESET"
@@ -83,18 +86,6 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Static:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -180,8 +171,10 @@ __meta__ = {
 }
 
 [node name="Bottom" type="Control" parent="Borders"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
@@ -192,28 +185,115 @@ __meta__ = {
 }
 
 [node name="BottomBorderCollision" type="CollisionShape2D" parent="Borders/Bottom/BottomBorderBody"]
-position = Vector2( 0, 7250 )
+position = Vector2( 0, 6651 )
 scale = Vector2( 1000, 1000 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HeartRate" parent="." instance=ExtResource( 12 )]
+[node name="Table" type="Control" parent="Borders"]
+visible = false
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TableBorderBody" type="StaticBody2D" parent="Borders/Table"]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TableCollision" type="CollisionShape2D" parent="Borders/Table/TableBorderBody"]
+visible = false
+position = Vector2( 0, 6577 )
+shape = SubResource( 4 )
+disabled = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Foreground" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.333333 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 20 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Interactables" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HeartRate" parent="Interactables" instance=ExtResource( 12 )]
 position = Vector2( 146, 102 )
 
-[node name="ID" parent="." instance=ExtResource( 13 )]
+[node name="ID" parent="Interactables" instance=ExtResource( 13 )]
 position = Vector2( 857, 106 )
 continuous_cd = 1
 
-[node name="Temperature" parent="." instance=ExtResource( 15 )]
+[node name="Temperature" parent="Interactables" instance=ExtResource( 15 )]
 position = Vector2( 478, 112 )
 
-[node name="Virus" parent="." instance=ExtResource( 17 )]
-position = Vector2( 411, 272 )
+[node name="Virus" parent="Interactables" instance=ExtResource( 17 )]
+position = Vector2( 830, 273 )
 
-[node name="Blood" parent="." instance=ExtResource( 16 )]
+[node name="Blood" parent="Interactables" instance=ExtResource( 16 )]
 position = Vector2( 146, 268 )
+
+[node name="ClockControl" parent="Interactables" instance=ExtResource( 22 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Calendar" type="TextureButton" parent="Interactables"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = -164.0
+margin_right = -44.0
+margin_bottom = -94.0
+texture_normal = ExtResource( 18 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="CheckList" type="TextureButton" parent="Interactables"]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -112.0
+margin_right = 110.0
+margin_bottom = -22.0
+texture_normal = ExtResource( 21 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Pause" type="Node" parent="."]
 pause_mode = 2
@@ -265,37 +345,42 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -139.0
-margin_top = -103.5
+margin_top = -108.5
 margin_right = 139.0
-margin_bottom = 103.5
+margin_bottom = 108.5
 mouse_filter = 0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="Pause/Menu/VerticalContainer"]
+[node name="Title" type="RichTextLabel" parent="Pause/Menu/VerticalContainer"]
 margin_right = 278.0
-margin_bottom = 31.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
 theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Jogo Pausado[/center]"
 text = "Jogo Pausado"
-align = 1
+scroll_active = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="BlankVSpace1" type="Label" parent="Pause/Menu/VerticalContainer"]
-margin_top = 35.0
+margin_top = 44.0
 margin_right = 278.0
-margin_bottom = 49.0
+margin_bottom = 58.0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Continue" type="Button" parent="Pause/Menu/VerticalContainer"]
-margin_top = 53.0
+margin_top = 62.0
 margin_right = 278.0
-margin_bottom = 90.0
+margin_bottom = 99.0
 theme = ExtResource( 8 )
 text = "Continuar"
 flat = true
@@ -304,17 +389,17 @@ __meta__ = {
 }
 
 [node name="BlankVSpace2" type="Label" parent="Pause/Menu/VerticalContainer"]
-margin_top = 94.0
+margin_top = 103.0
 margin_right = 278.0
-margin_bottom = 108.0
+margin_bottom = 117.0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Options" type="Button" parent="Pause/Menu/VerticalContainer"]
-margin_top = 112.0
+margin_top = 121.0
 margin_right = 278.0
-margin_bottom = 149.0
+margin_bottom = 158.0
 theme = ExtResource( 8 )
 text = "Opções"
 flat = true
@@ -323,17 +408,17 @@ __meta__ = {
 }
 
 [node name="BlankVSpace3" type="Label" parent="Pause/Menu/VerticalContainer"]
-margin_top = 153.0
+margin_top = 162.0
 margin_right = 278.0
-margin_bottom = 167.0
+margin_bottom = 176.0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Exit" type="Button" parent="Pause/Menu/VerticalContainer"]
-margin_top = 171.0
+margin_top = 180.0
 margin_right = 278.0
-margin_bottom = 208.0
+margin_bottom = 217.0
 theme = ExtResource( 8 )
 text = "Voltar ao Menu"
 flat = true
@@ -363,29 +448,34 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="Pause/Options/VerticalContainer"]
-margin_top = 41.0
+[node name="Title" type="RichTextLabel" parent="Pause/Options/VerticalContainer"]
+margin_top = 36.0
 margin_right = 149.0
-margin_bottom = 72.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
 theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Opções[/center]"
 text = "Opções"
-align = 1
+scroll_active = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="BlankVSpace1" type="Label" parent="Pause/Options/VerticalContainer"]
-margin_top = 76.0
+margin_top = 80.0
 margin_right = 149.0
-margin_bottom = 90.0
+margin_bottom = 94.0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Volume" type="Label" parent="Pause/Options/VerticalContainer"]
-margin_top = 94.0
+margin_top = 98.0
 margin_right = 149.0
-margin_bottom = 125.0
+margin_bottom = 129.0
 theme = ExtResource( 8 )
 text = "Volume"
 align = 1
@@ -394,9 +484,9 @@ __meta__ = {
 }
 
 [node name="VolumeSlider" type="HSlider" parent="Pause/Options/VerticalContainer"]
-margin_top = 129.0
+margin_top = 133.0
 margin_right = 149.0
-margin_bottom = 145.0
+margin_bottom = 149.0
 min_value = -30.0
 max_value = 0.0
 __meta__ = {
@@ -404,17 +494,17 @@ __meta__ = {
 }
 
 [node name="BlankVSpace2" type="Label" parent="Pause/Options/VerticalContainer"]
-margin_top = 149.0
+margin_top = 153.0
 margin_right = 149.0
-margin_bottom = 163.0
+margin_bottom = 167.0
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Back" type="Button" parent="Pause/Options/VerticalContainer"]
-margin_top = 167.0
+margin_top = 171.0
 margin_right = 149.0
-margin_bottom = 204.0
+margin_bottom = 208.0
 theme = ExtResource( 8 )
 text = "Voltar"
 flat = true
@@ -435,36 +525,42 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -114.0
-margin_top = -36.0
-margin_right = 114.0
-margin_bottom = 36.0
+margin_left = -250.0
+margin_top = -40.5
+margin_right = 250.0
+margin_bottom = 40.5
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Title" type="Label" parent="Pause/ExitPopup/VerticalContainer"]
-margin_right = 228.0
-margin_bottom = 31.0
+[node name="Title" type="RichTextLabel" parent="Pause/ExitPopup/VerticalContainer"]
+margin_right = 500.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 500, 40 )
+mouse_filter = 2
 theme = ExtResource( 8 )
-text = "Quer mesmo sair?"
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Quer mesmo sair ?[/center]"
+text = "Quer mesmo sair ?"
+scroll_active = false
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HorizontalContainer" type="HBoxContainer" parent="Pause/ExitPopup/VerticalContainer"]
-margin_top = 35.0
-margin_right = 228.0
-margin_bottom = 72.0
+margin_top = 44.0
+margin_right = 500.0
+margin_bottom = 81.0
 alignment = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Yes" type="Button" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
-margin_left = 49.0
-margin_right = 108.0
+margin_left = 185.0
+margin_right = 244.0
 margin_bottom = 37.0
 theme = ExtResource( 8 )
 text = "Sim"
@@ -474,9 +570,9 @@ __meta__ = {
 }
 
 [node name="BlankVSpace1" type="Label" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
-margin_left = 112.0
+margin_left = 248.0
 margin_top = 11.0
-margin_right = 112.0
+margin_right = 248.0
 margin_bottom = 25.0
 text = "	"
 __meta__ = {
@@ -484,8 +580,8 @@ __meta__ = {
 }
 
 [node name="No" type="Button" parent="Pause/ExitPopup/VerticalContainer/HorizontalContainer"]
-margin_left = 116.0
-margin_right = 178.0
+margin_left = 252.0
+margin_right = 314.0
 margin_bottom = 37.0
 theme = ExtResource( 8 )
 text = "Não"
@@ -519,6 +615,29 @@ __meta__ = {
 
 [node name="VHSShaderRect" type="ColorRect" parent="Pause/Shaders/VHSShaderControl"]
 material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderControl" type="Control" parent="Pause/Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderBuffer" type="BackBufferCopy" parent="Pause/Shaders/LDShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderRect" type="ColorRect" parent="Pause/Shaders/LDShaderControl"]
+material = ExtResource( 23 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -565,13 +684,71 @@ anims/FADE = SubResource( 3 )
 anims/RESET = SubResource( 2 )
 
 [node name="TVStatic" type="AudioStreamPlayer" parent="Pause"]
+pause_mode = 2
 stream = ExtResource( 7 )
 volume_db = -10.0
 
 [node name="Static" type="AudioStreamPlayer" parent="Pause"]
+pause_mode = 2
 stream = ExtResource( 10 )
 volume_db = -28.0
 pitch_scale = 1.05
+
+[node name="BlackBorders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderL" type="ColorRect" parent="BlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_bottom = 1.0
+margin_right = 9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderR" type="ColorRect" parent="BlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderB" type="ColorRect" parent="BlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderT" type="ColorRect" parent="BlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_bottom = 9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="Shaders" type="Control" parent="."]
 anchor_right = 1.0
@@ -627,6 +804,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[connection signal="pressed" from="Interactables/Calendar" to="." method="_on_Calendar_pressed"]
+[connection signal="pressed" from="Interactables/CheckList" to="." method="_on_CheckList_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Continue" to="Pause" method="_on_Continue_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Options" to="Pause" method="_on_Options_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Exit" to="Pause" method="_on_Exit_pressed"]

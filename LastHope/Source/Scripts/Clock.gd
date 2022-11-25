@@ -7,9 +7,9 @@ var clock_text_timer = Timer.new()
 var clock_sep_timer = Timer.new()
 
 # O texto que representa o tempo.
-onready var clock_hour = get_node("VerticalClockContainer/HorizontalClockContainer/Hour")
+onready var clock_hour = get_node("FrameControl/HorizontalClockContainer/Hour")
 # O texto que representa o separador.
-onready var clock_sep = get_node("VerticalClockContainer/HorizontalClockContainer/Sep")
+onready var clock_sep = get_node("FrameControl/HorizontalClockContainer/Sep")
 
 # Incrementa o tempo do relógio.
 func _inc_clock_time():

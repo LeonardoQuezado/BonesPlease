@@ -14,7 +14,7 @@ var width = 0
 var height = 0
 
 func _ready():
-	print("TODO: testcardcollision.gd Fazer uma animação ou coisa do tipo do cartão dando 'spawn'.")
+	print("TODO: Game.gd Fazer uma animação ou coisa do tipo do cartão dando 'spawn'.")
 
 	# Ativa a função "clicked" em "_on_pickable_clicked" dos cartões.
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -26,10 +26,10 @@ func _physics_process(delta):
 	self.height = self.get_viewport().size.y
 
 	# Pega o nome do paciente no cartão ID.
-	self.current_patient_name = self.get_node("ID").patient_name
+	self.current_patient_name = self.get_node("Interactables/ID").patient_name
 	
 	# Pega o tipo sanguíneo do paciente pelo ID.
-	self.current_blood_type = self.get_node("ID").patient_blood_type
+	self.current_blood_type = self.get_node("Interactables/ID").patient_blood_type
 	
 	# Altera o nome do paciente nos demais cartões.
 	for node in get_tree().get_nodes_in_group("pickable"):
@@ -57,3 +57,11 @@ func _unhandled_input(event):
 		if held_object and !event.pressed:
 			held_object.drop()
 			held_object = null
+
+
+func _on_Calendar_pressed():
+	print("TODO: Game.gd Calendar_pressed() :. Mostrar uma animação de fade-in/out mostrando o dia/fase atual.")
+
+
+func _on_CheckList_pressed():
+	print("TODO: Game.gd Checklist_pressed() :. Mostrar documento principal. Aquele que o usuário tem que preencher.")
