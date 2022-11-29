@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
@@ -23,6 +23,13 @@
 [ext_resource path="res://Source/Images/checklist.png" type="Texture" id=21]
 [ext_resource path="res://Source/Scenes/Clock.tscn" type="PackedScene" id=22]
 [ext_resource path="res://Source/Shaders/LensDistortion/LensDistortionShaderMaterial.tres" type="Material" id=23]
+[ext_resource path="res://Source/Sounds/Clock_Ticking.wav" type="AudioStream" id=24]
+[ext_resource path="res://Source/Sounds/Cuckoo.wav" type="AudioStream" id=25]
+[ext_resource path="res://Source/Sounds/DoorOpening.wav" type="AudioStream" id=26]
+[ext_resource path="res://Source/Sounds/HospitalBackground.wav" type="AudioStream" id=27]
+[ext_resource path="res://Source/Sounds/Rain.wav" type="AudioStream" id=28]
+[ext_resource path="res://Source/Sounds/Cars.wav" type="AudioStream" id=29]
+[ext_resource path="res://Source/Sounds/Fan.wav" type="AudioStream" id=30]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 6.66875 )
@@ -90,6 +97,576 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 1,
 "values": [ false ]
+}
+
+[sub_resource type="DynamicFont" id=6]
+size = 56
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+outline_size = 1
+outline_color = Color( 0.00784314, 1, 0, 1 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 32
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 56
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 38
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="Animation" id=15]
+resource_name = "BUTTONS_END_DAY_FADE"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("HBoxContainer:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ButtonsFade:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ButtonsFade:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 2, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("HBoxContainer/GoBackToMenu:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("HBoxContainer/NextDay:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1, 3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "DAY_INFO_FADE"
+length = 4.0
+step = 1.0
+tracks/0/type = "value"
+tracks/0/path = NodePath("../CalendarFade:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CalendarFade/DayInfo:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 3, 4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "END_DAY_FADE"
+length = 8.1
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TitleFade:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1, 2, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("VerticalContainer:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("SubTitleFade:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1, 3, 5, 6, 8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Pause/TVStatic:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 8, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../Pause/TextureRect:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 8, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "FADE"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../Pause/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../Pause/TVStatic:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=13]
+resource_name = "NEW_DAY_FADE"
+length = 8.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("../NewLevel:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 8.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../NewLevel/TitleFade:rect_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1, 3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../NewLevel/Title:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1, 5, 6, 7.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("../Pause/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 8, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("../Pause/TVStatic:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 8, 8.1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ false, true, false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("../DoorOpening:playing")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 8.1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("FadeBackground:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Title:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TitleFade:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("VerticalContainer:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("SubTitleFade:visible")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("SubTitleFade:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("TitleFade:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("../Pause/TVStatic:playing")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("../Pause/Static:playing")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("../Pause/TextureRect:visible")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("../CalendarFade:visible")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("../CalendarFade/DayInfo:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("../NewLevel:visible")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("../NewLevel/TitleFade:rect_scale")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("../NewLevel/Title:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("../DoorOpening:playing")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("HBoxContainer:visible")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ false ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("ButtonsFade:rect_scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("HBoxContainer/GoBackToMenu:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("HBoxContainer/NextDay:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ) ]
 }
 
 [node name="HUD" type="Control"]
@@ -247,20 +824,20 @@ __meta__ = {
 }
 
 [node name="HeartRate" parent="Interactables" instance=ExtResource( 12 )]
-position = Vector2( 146, 102 )
+position = Vector2( 509, 445 )
 
 [node name="ID" parent="Interactables" instance=ExtResource( 13 )]
-position = Vector2( 857, 106 )
+position = Vector2( 815, 266 )
 continuous_cd = 1
 
 [node name="Temperature" parent="Interactables" instance=ExtResource( 15 )]
-position = Vector2( 478, 112 )
+position = Vector2( 656, 96 )
 
 [node name="Virus" parent="Interactables" instance=ExtResource( 17 )]
-position = Vector2( 830, 273 )
+position = Vector2( 216, 326 )
 
 [node name="Blood" parent="Interactables" instance=ExtResource( 16 )]
-position = Vector2( 146, 268 )
+position = Vector2( 372, 142 )
 
 [node name="ClockControl" parent="Interactables" instance=ExtResource( 22 )]
 __meta__ = {
@@ -804,6 +1381,369 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="EndLevel" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FadeBackground" type="ColorRect" parent="EndLevel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="EndLevel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -220.5
+margin_top = -35.0
+margin_right = 220.5
+margin_bottom = 35.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 6 )
+text = "Dia 0 terminou"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TitleFade" type="ColorRect" parent="EndLevel"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_bottom = 460.0
+rect_min_size = Vector2( 0, 500 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="EndLevel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -636.5
+margin_top = 40.0
+margin_right = 636.5
+margin_bottom = 42.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SubTitleSaves" type="HBoxContainer" parent="EndLevel/VerticalContainer"]
+margin_right = 1273.0
+margin_bottom = 40.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SaveText1" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
+margin_left = 495.0
+margin_top = 4.0
+margin_right = 646.0
+margin_bottom = 35.0
+theme = ExtResource( 8 )
+text = "Você salvou"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SaveCount" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
+margin_left = 650.0
+margin_right = 672.0
+margin_bottom = 40.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 9 )
+text = "0"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SaveText2" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
+margin_left = 676.0
+margin_top = 4.0
+margin_right = 778.0
+margin_bottom = 35.0
+theme = ExtResource( 8 )
+text = "pessoas"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SubTitleDeaths" type="HBoxContainer" parent="EndLevel/VerticalContainer"]
+margin_top = 44.0
+margin_right = 1273.0
+margin_bottom = 84.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DeathCount" type="Label" parent="EndLevel/VerticalContainer/SubTitleDeaths"]
+margin_left = 506.0
+margin_right = 528.0
+margin_bottom = 40.0
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 10 )
+text = "0"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DeathText1" type="Label" parent="EndLevel/VerticalContainer/SubTitleDeaths"]
+margin_left = 532.0
+margin_top = 4.0
+margin_right = 767.0
+margin_bottom = 35.0
+theme = ExtResource( 8 )
+text = "pessoas morreram"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SubTitleFade" type="ColorRect" parent="EndLevel"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -512.0
+margin_top = 45.0
+margin_right = 512.0
+margin_bottom = 10045.0
+rect_min_size = Vector2( 0, 10000 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="VBoxContainer" parent="EndLevel"]
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -172.0
+margin_top = -48.0
+margin_right = 172.0
+margin_bottom = 48.0
+mouse_filter = 2
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NextDay" type="Button" parent="EndLevel/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_right = 344.0
+margin_bottom = 37.0
+theme = ExtResource( 8 )
+text = "Dormir"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankSpace" type="Label" parent="EndLevel/HBoxContainer"]
+margin_top = 41.0
+margin_right = 344.0
+margin_bottom = 55.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="GoBackToMenu" type="Button" parent="EndLevel/HBoxContainer"]
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 59.0
+margin_right = 344.0
+margin_bottom = 96.0
+theme = ExtResource( 8 )
+text = "Voltar ao Menu"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Popup" type="Control" parent="EndLevel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Title" type="RichTextLabel" parent="EndLevel/Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -60.0
+margin_right = 250.0
+margin_bottom = -60.0
+rect_min_size = Vector2( 500, 40 )
+mouse_filter = 2
+theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 5 )
+bbcode_enabled = true
+bbcode_text = "[center]Quer mesmo sair ?[/center]"
+text = "Quer mesmo sair ?"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="EndLevel/Popup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -72.5
+margin_top = -20.0
+margin_right = 72.5
+margin_bottom = 20.0
+mouse_filter = 2
+
+[node name="Yes" type="Button" parent="EndLevel/Popup/HBoxContainer"]
+margin_right = 59.0
+margin_bottom = 40.0
+theme = ExtResource( 8 )
+text = "Sim"
+flat = true
+
+[node name="BlankSpace" type="Label" parent="EndLevel/Popup/HBoxContainer"]
+margin_left = 63.0
+margin_top = 13.0
+margin_right = 79.0
+margin_bottom = 27.0
+text = "    "
+
+[node name="No" type="Button" parent="EndLevel/Popup/HBoxContainer"]
+margin_left = 83.0
+margin_right = 145.0
+margin_bottom = 40.0
+theme = ExtResource( 8 )
+text = "Não"
+flat = true
+
+[node name="ButtonsFade" type="ColorRect" parent="EndLevel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_scale = Vector2( 1e-05, 1 )
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NewLevel" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="FadeBackground" type="ColorRect" parent="NewLevel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="NewLevel"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -76.0
+margin_top = -35.0
+margin_right = 76.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 14 )
+text = "Dia 0"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TitleFade" type="ColorRect" parent="NewLevel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="CalendarFade" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DayInfo" type="Label" parent="CalendarFade"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -65.5
+margin_top = -72.0
+margin_right = 65.5
+theme = ExtResource( 8 )
+custom_fonts/font = SubResource( 11 )
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../EndLevel")
+anims/BUTTONS_END_DAY_FADE = SubResource( 15 )
+anims/DAY_INFO_FADE = SubResource( 12 )
+anims/END_DAY_FADE = SubResource( 7 )
+anims/FADE = SubResource( 16 )
+anims/NEW_DAY_FADE = SubResource( 13 )
+anims/RESET = SubResource( 8 )
+
+[node name="Clock_Ticking" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -3.0
+
+[node name="Cuckoo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 25 )
+volume_db = -5.0
+
+[node name="DoorOpening" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 26 )
+volume_db = -3.0
+
+[node name="HospitalBackground" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 27 )
+volume_db = -5.0
+
+[node name="Cars" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 29 )
+volume_db = -15.0
+
+[node name="Fan" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 30 )
+volume_db = 8.0
+
+[node name="Rain" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 28 )
+volume_db = -3.0
+
 [connection signal="pressed" from="Interactables/Calendar" to="." method="_on_Calendar_pressed"]
 [connection signal="pressed" from="Interactables/CheckList" to="." method="_on_CheckList_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Continue" to="Pause" method="_on_Continue_pressed"]
@@ -813,3 +1753,7 @@ __meta__ = {
 [connection signal="pressed" from="Pause/Options/VerticalContainer/Back" to="Pause" method="_on_Back_pressed"]
 [connection signal="pressed" from="Pause/ExitPopup/VerticalContainer/HorizontalContainer/Yes" to="Pause" method="_on_Yes_pressed"]
 [connection signal="pressed" from="Pause/ExitPopup/VerticalContainer/HorizontalContainer/No" to="Pause" method="_on_No_pressed"]
+[connection signal="pressed" from="EndLevel/HBoxContainer/NextDay" to="." method="_on_NextDay_pressed"]
+[connection signal="pressed" from="EndLevel/HBoxContainer/GoBackToMenu" to="." method="_on_GoBackToMenu_pressed"]
+[connection signal="pressed" from="EndLevel/Popup/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="EndLevel/Popup/HBoxContainer/No" to="." method="_on_No_pressed"]

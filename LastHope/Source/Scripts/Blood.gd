@@ -11,6 +11,9 @@ export(String) var patient_name
 # Exporta os batimentos cardíacos do paciente.
 export(String) var patient_blood_type
 
+func _ready():
+	pass
+
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

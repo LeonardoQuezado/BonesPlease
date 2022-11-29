@@ -6,6 +6,9 @@ var clock_text_timer = Timer.new()
 # Cria um timer para a animação do separador do horário.
 var clock_sep_timer = Timer.new()
 
+# Indica se o tempo terminou ou não.
+export(bool) var time_up = false
+
 # O texto que representa o tempo.
 onready var clock_hour = get_node("FrameControl/HorizontalClockContainer/Hour")
 # O texto que representa o separador.
@@ -19,7 +22,10 @@ func _inc_clock_time():
 	# Verifica se o tempo chegou a 00:00 e termina a fase.
 	if self.clock_hour.text == "24":
 		self.clock_hour.text = "00"
-		print("TODO: Clock.gd Para o jogo quando chegar em 00")
+		self.time_up = true
+		# Para a contagem no relógio.
+		self.clock_sep_timer.stop()
+		self.clock_text_timer.stop()
 
 # Anima a separação do tempo.
 func _blink_clock_separator():
@@ -31,7 +37,7 @@ func _configure_clock_sep_timer():
 	# Adiciona o timer a cena.
 	self.add_child(self.clock_sep_timer)
 	# Tempo de espera até a chamada de outra função.
-	self.clock_sep_timer.wait_time = 1.0
+	self.clock_sep_timer.wait_time = 0.5
 	# Executa repetidamente.
 	self.clock_sep_timer.one_shot = false
 	# Conecta a função "_inc_clock_time" ao timer.
@@ -54,5 +60,6 @@ func _configure_clock_text_timer():
 
 # Executado quando a cena for carregada.
 func _ready():
+	self.clock_hour.text = "20"
 	self._configure_clock_sep_timer()
 	self._configure_clock_text_timer()

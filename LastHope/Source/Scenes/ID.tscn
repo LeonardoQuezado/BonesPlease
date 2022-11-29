@@ -461,10 +461,10 @@ __meta__ = {
 
 [node name="NameLabel" type="Label" parent="CardNineRect/IDControl"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 60.0
-margin_top = 13.0
-margin_right = 136.0
-margin_bottom = 27.0
+margin_left = 77.0
+margin_top = 14.0
+margin_right = 153.0
+margin_bottom = 28.0
 theme = ExtResource( 3 )
 text = "Nome do Paciente"
 __meta__ = {

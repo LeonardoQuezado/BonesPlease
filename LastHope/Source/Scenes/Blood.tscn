@@ -19,7 +19,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -46,6 +46,7 @@ margin_top = -2.0
 margin_right = 53.0
 margin_bottom = 58.0
 rect_pivot_offset = Vector2( 108, 30 )
+mouse_filter = 2
 texture = ExtResource( 3 )
 expand = true
 __meta__ = {
@@ -100,9 +101,9 @@ anchor_left = -0.591469
 anchor_top = 0.5
 anchor_right = -0.591469
 anchor_bottom = 0.5
-margin_left = 75.0
+margin_left = 80.9763
 margin_top = 10.0
-margin_right = 151.0
+margin_right = 156.976
 margin_bottom = 24.0
 theme = ExtResource( 5 )
 text = "Nome do Paciente"

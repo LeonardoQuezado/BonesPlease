@@ -19,7 +19,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Hitbox" type="CollisionShape2D" parent="."]
+[node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 10, 0 )
 shape = SubResource( 1 )
 __meta__ = {
