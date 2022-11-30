@@ -26,6 +26,19 @@ func _ready():
 	self.temperature = self.rng.randf_range(36.0, 38.5)
 	$UI/PatientTemperature.text = "%.1f°C" % self.temperature
 
+# Verifica se a resposta está certa.
+func is_answer_correct(temp_class):
+	if self.temperature >= 36.0 and self.temperature <= 37.2:
+		if temp_class == "Normal":
+			return true
+	elif self.temperature >= 37.3 and self.temperature <= 37.7:
+		if temp_class == "Estado Febril":
+			return true
+	elif self.temperature >= 37.8 and self.temperature <= 38.5:
+		if temp_class == "Febre":
+			return true
+	return false
+
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

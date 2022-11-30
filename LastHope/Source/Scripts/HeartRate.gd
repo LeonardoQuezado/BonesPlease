@@ -26,6 +26,20 @@ func _ready():
 	self.heart_bpm = self.rng.randi_range(40, 120)
 	$UI/HeartRate.text = "%03d" % self.heart_bpm
 
+# Verifica se a resposta está certa.
+func is_answer_correct(heartrate_class):
+	if self.heart_bpm >= 60 and self.heart_bpm <= 100:
+		if heartrate_class == "Normal":
+			return true
+	elif self.heart_bpm > 100:
+		if heartrate_class == "Taquicardia":
+			return true
+	elif self.heart_bpm < 60:
+		if heartrate_class == "Bradicardia":
+			return true
+	return false
+
+
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

@@ -8,7 +8,7 @@ var held = false
 # Exporta o nome do paciente.
 export(String) var patient_name
 
-# Exporta os batimentos cardíacos do paciente.
+# Exporta o tipo sanguineo do paciente.
 export(String) var patient_blood_type
 
 func _ready():

@@ -8,10 +8,10 @@
 [ext_resource path="res://Source/Scripts/Blood.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 60, 40 )
+extents = Vector2( 75, 45 )
 
 [node name="Blood" type="RigidBody2D" groups=["pickable"]]
-position = Vector2( 60, 40 )
+position = Vector2( 90, 50 )
 input_pickable = true
 mode = 2
 script = ExtResource( 6 )
@@ -20,6 +20,7 @@ __meta__ = {
 }
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2( -15, -5 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -30,21 +31,20 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -60.0
-margin_top = -40.0
+margin_left = -90.0
+margin_top = -50.0
 margin_right = 60.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 79, 70 )
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Blood" type="TextureRect" parent="UI"]
-margin_left = -7.0
-margin_top = -2.0
-margin_right = 53.0
-margin_bottom = 58.0
+margin_left = -10.0
+margin_top = -6.0
+margin_right = 66.0
+margin_bottom = 69.0
 rect_pivot_offset = Vector2( 108, 30 )
 mouse_filter = 2
 texture = ExtResource( 3 )
@@ -59,10 +59,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -15.0
-margin_top = -30.0
-margin_right = 51.0
-margin_bottom = -19.0
+margin_left = -12.0
+margin_top = -35.0
+margin_right = 54.0
+margin_bottom = -24.0
 theme = ExtResource( 5 )
 text = "Tipo Sanguíneo"
 __meta__ = {
@@ -76,9 +76,8 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -5.0
-margin_top = -25.0
+margin_top = -31.0
 margin_right = 45.0
-margin_bottom = 6.0
 theme = ExtResource( 1 )
 align = 1
 __meta__ = {
@@ -88,7 +87,7 @@ __meta__ = {
 [node name="BottomTempertureLine" type="Line2D" parent="UI"]
 position = Vector2( -4.25766, 12.0004 )
 scale = Vector2( 1.02373, 0.999996 )
-points = PoolVector2Array( 47.139, 29.9997, 113.563, 29.9997 )
+points = PoolVector2Array( 59.8377, 29.9997, 137.006, 29.9997 )
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 __meta__ = {
@@ -101,10 +100,10 @@ anchor_left = -0.591469
 anchor_top = 0.5
 anchor_right = -0.591469
 anchor_bottom = 0.5
-margin_left = 80.9763
-margin_top = 10.0
-margin_right = 156.976
-margin_bottom = 24.0
+margin_left = 104.72
+margin_top = 15.0
+margin_right = 180.72
+margin_bottom = 29.0
 theme = ExtResource( 5 )
 text = "Nome do Paciente"
 __meta__ = {
@@ -117,10 +116,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -57.0
-margin_top = 19.0
-margin_right = 34.0
-margin_bottom = 30.0
+margin_left = -69.9763
+margin_top = 23.0
+margin_right = 30.0237
+margin_bottom = 34.0
 theme = ExtResource( 5 )
 align = 1
 clip_text = true
@@ -129,9 +128,9 @@ __meta__ = {
 }
 
 [node name="BottomNameLine" type="Line2D" parent="UI"]
-position = Vector2( -54.2577, 39.9999 )
+position = Vector2( -54.234, 42.9999 )
 scale = Vector2( 1.02373, 1 )
-points = PoolVector2Array( 56.9304, 29.0001, 143.844, 29.0001 )
+points = PoolVector2Array( 57.8841, 35.0001, 155.566, 35.0001 )
 width = 1.0
 default_color = Color( 1, 0, 0, 1 )
 __meta__ = {
@@ -139,10 +138,11 @@ __meta__ = {
 }
 
 [node name="HospitalLogo" type="TextureRect" parent="UI"]
-margin_left = 95.0
-margin_top = 55.0
-margin_right = 115.0
-margin_bottom = 75.0
+margin_left = 105.0
+margin_top = 46.0
+margin_right = 145.0
+margin_bottom = 86.0
+mouse_filter = 2
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {

@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/PaperSliding2.wav-3fbc0d158b4bb6203a8d85b5e37643a9.sample"
+
+[deps]
+
+source_file="res://Source/Sounds/PaperSliding2.wav"
+dest_files=[ "res://.import/PaperSliding2.wav-3fbc0d158b4bb6203a8d85b5e37643a9.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

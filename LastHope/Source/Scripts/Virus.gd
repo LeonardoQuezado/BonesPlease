@@ -26,6 +26,20 @@ func _ready():
 	self.has_virus = self.rng.randi() % 2 == 0
 	$UI/PatientHasVirus.pressed = self.has_virus
 
+# Verifica se a resposta está certa.
+func is_answer_correct(patient_virus_info):
+	var patient_virus_type = patient_virus_info[0]
+	var patient_has_virus = patient_virus_info[1]
+	
+	if patient_virus_type == $UI/PatientVirus.text:
+		if self.has_virus:
+			if patient_has_virus == "Sim":
+				return true
+		else:
+			if patient_has_virus == "Não":
+				return true
+	return false
+
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		if event.button_index == BUTTON_LEFT and event.pressed:

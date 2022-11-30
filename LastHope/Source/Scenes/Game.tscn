@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=2]
+[gd_scene load_steps=77 format=2]
 
 [ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
@@ -11,12 +11,7 @@
 [ext_resource path="res://Source/Shaders/Sharpness/SharpnessShaderMaterial.tres" type="Material" id=9]
 [ext_resource path="res://Source/Sounds/Static.wav" type="AudioStream" id=10]
 [ext_resource path="res://Source/Shaders/GrayScale/GrayScaleShaderMaterial.tres" type="Material" id=11]
-[ext_resource path="res://Source/Scenes/HeartRate.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Source/Scenes/ID.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Source/Scripts/Pause.gd" type="Script" id=14]
-[ext_resource path="res://Source/Scenes/Temperature.tscn" type="PackedScene" id=15]
-[ext_resource path="res://Source/Scenes/Blood.tscn" type="PackedScene" id=16]
-[ext_resource path="res://Source/Scenes/Virus.tscn" type="PackedScene" id=17]
 [ext_resource path="res://Source/Images/calendar.png" type="Texture" id=18]
 [ext_resource path="res://Source/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://Source/Images/hospital_background.png" type="Texture" id=20]
@@ -30,6 +25,18 @@
 [ext_resource path="res://Source/Sounds/Rain.wav" type="AudioStream" id=28]
 [ext_resource path="res://Source/Sounds/Cars.wav" type="AudioStream" id=29]
 [ext_resource path="res://Source/Sounds/Fan.wav" type="AudioStream" id=30]
+[ext_resource path="res://Source/Images/paper.jpg" type="Texture" id=32]
+[ext_resource path="res://Source/Fonts/Morgan.otf" type="DynamicFontData" id=33]
+[ext_resource path="res://Source/Images/clip.png" type="Texture" id=34]
+[ext_resource path="res://Source/Images/game_hospital_logo.png" type="Texture" id=35]
+[ext_resource path="res://Source/Sounds/PaperFlip1.wav" type="AudioStream" id=36]
+[ext_resource path="res://Source/Sounds/PaperFlip2.wav" type="AudioStream" id=37]
+[ext_resource path="res://Source/Images/send.png" type="Texture" id=38]
+[ext_resource path="res://Source/Sounds/Signature.wav" type="AudioStream" id=39]
+[ext_resource path="res://Source/Sounds/Stamp.wav" type="AudioStream" id=40]
+[ext_resource path="res://Source/Sounds/PaperSliding3.wav" type="AudioStream" id=41]
+[ext_resource path="res://Source/Sounds/PaperSliding2.wav" type="AudioStream" id=42]
+[ext_resource path="res://Source/Sounds/PaperSliding1.wav" type="AudioStream" id=43]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 6.66875 )
@@ -128,6 +135,98 @@ size = 38
 outline_size = 2
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 19 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 24
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 20
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=24]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=25]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=26]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=27]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=28]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=29]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=30]
+size = 20
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=31]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=33]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=32]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=34]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=35]
+size = 20
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=36]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=37]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=38]
+size = 20
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=39]
+size = 12
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=40]
+size = 10
+font_data = ExtResource( 33 )
+
+[sub_resource type="DynamicFont" id=42]
+size = 10
+font_data = ExtResource( 33 )
 
 [sub_resource type="Animation" id=15]
 resource_name = "BUTTONS_END_DAY_FADE"
@@ -668,6 +767,66 @@ tracks/20/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0 ) ]
 }
+tracks/21/type = "value"
+tracks/21/path = NodePath("../DocumentFade:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("../DocumentFade/UI/IDSection:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ true ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("../DocumentFade/UI/HeartRateSection:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("../DocumentFade/UI/TemperatureSection:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("../DocumentFade/UI/VirusSection:visible")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
 
 [node name="HUD" type="Control"]
 anchor_right = 1.0
@@ -822,22 +981,6 @@ mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
-
-[node name="HeartRate" parent="Interactables" instance=ExtResource( 12 )]
-position = Vector2( 509, 445 )
-
-[node name="ID" parent="Interactables" instance=ExtResource( 13 )]
-position = Vector2( 815, 266 )
-continuous_cd = 1
-
-[node name="Temperature" parent="Interactables" instance=ExtResource( 15 )]
-position = Vector2( 656, 96 )
-
-[node name="Virus" parent="Interactables" instance=ExtResource( 17 )]
-position = Vector2( 216, 326 )
-
-[node name="Blood" parent="Interactables" instance=ExtResource( 16 )]
-position = Vector2( 372, 142 )
 
 [node name="ClockControl" parent="Interactables" instance=ExtResource( 22 )]
 __meta__ = {
@@ -1452,9 +1595,9 @@ __meta__ = {
 }
 
 [node name="SaveText1" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
-margin_left = 495.0
+margin_left = 497.0
 margin_top = 4.0
-margin_right = 646.0
+margin_right = 648.0
 margin_bottom = 35.0
 theme = ExtResource( 8 )
 text = "Você salvou"
@@ -1463,23 +1606,22 @@ __meta__ = {
 }
 
 [node name="SaveCount" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
-margin_left = 650.0
-margin_right = 672.0
+margin_left = 652.0
+margin_right = 652.0
 margin_bottom = 40.0
 theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 9 )
-text = "0"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="SaveText2" type="Label" parent="EndLevel/VerticalContainer/SubTitleSaves"]
-margin_left = 676.0
+margin_left = 656.0
 margin_top = 4.0
-margin_right = 778.0
+margin_right = 776.0
 margin_bottom = 35.0
 theme = ExtResource( 8 )
-text = "pessoas"
+text = "pessoa(s)"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1494,23 +1636,22 @@ __meta__ = {
 }
 
 [node name="DeathCount" type="Label" parent="EndLevel/VerticalContainer/SubTitleDeaths"]
-margin_left = 506.0
-margin_right = 528.0
+margin_left = 491.0
+margin_right = 491.0
 margin_bottom = 40.0
 theme = ExtResource( 8 )
 custom_fonts/font = SubResource( 10 )
-text = "0"
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="DeathText1" type="Label" parent="EndLevel/VerticalContainer/SubTitleDeaths"]
-margin_left = 532.0
+margin_left = 495.0
 margin_top = 4.0
-margin_right = 767.0
+margin_right = 782.0
 margin_bottom = 35.0
 theme = ExtResource( 8 )
-text = "pessoas morreram"
+text = "pessoa(s) morreu(ram)"
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1707,6 +1848,570 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="DocumentFade" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="DocumentFade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DocExitButton" type="Button" parent="DocumentFade"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundPaper" type="TextureRect" parent="DocumentFade"]
+modulate = Color( 1, 1, 1, 0.611765 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -197.0
+margin_top = -267.0
+margin_right = 209.0
+margin_bottom = 277.0
+rect_min_size = Vector2( 400, 0 )
+texture = ExtResource( 32 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UI" type="NinePatchRect" parent="DocumentFade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -270.0
+margin_right = 200.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 400, 0 )
+texture = ExtResource( 32 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Header" type="Control" parent="DocumentFade/UI"]
+anchor_right = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineL" type="Line2D" parent="DocumentFade/UI/Header"]
+position = Vector2( 66.2051, 29 )
+points = PoolVector2Array( -58.2051, 21, 34.7949, 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HospitalLogo" type="TextureRect" parent="DocumentFade/UI/Header"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.0
+margin_top = 11.0
+margin_right = -28.0
+margin_bottom = 91.0
+mouse_filter = 2
+texture = ExtResource( 35 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="DocumentFade/UI/Header"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -30.0
+margin_top = 20.0
+margin_right = 100.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 17 )
+text = "Hospital Genérico"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineR" type="Line2D" parent="DocumentFade/UI/Header"]
+position = Vector2( 185.205, 29 )
+points = PoolVector2Array( 113.795, 21, 205.795, 21 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Clip" type="TextureRect" parent="DocumentFade/UI/Header"]
+margin_left = 20.0
+margin_top = -12.0
+margin_right = 100.0
+margin_bottom = 68.0
+mouse_filter = 2
+texture = ExtResource( 34 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IntroductionSection" type="Control" parent="DocumentFade/UI"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 90.0
+margin_right = -10.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Introduction" type="Label" parent="DocumentFade/UI/IntroductionSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 380.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 18 )
+text = "Caro paciente, este documento contém todas as informações necessárias sobre suas condições físicas, mentais e dentre outras. Por favor, direcione o mesmo a um médico responsável."
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IDSection" type="Control" parent="DocumentFade/UI"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 161.0
+margin_right = -10.0
+margin_bottom = 161.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -4.0
+margin_right = 54.0
+margin_bottom = 5.0
+custom_fonts/font = SubResource( 19 )
+text = "Identificação"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="DocumentFade/UI/IDSection"]
+position = Vector2( 105, 8 )
+points = PoolVector2Array( 278, 0, 56, 0 )
+width = 6.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 20.0
+margin_right = 126.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 20 )
+text = "Nome do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientName" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 130.0
+margin_top = 21.0
+margin_right = 383.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 23 )
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AgeLabel" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 35.0
+margin_right = 127.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 24 )
+text = "Idade do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientAge" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 128.0
+margin_top = 37.0
+margin_right = 144.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 25 )
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SexLabel" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 145.0
+margin_top = 35.0
+margin_right = 197.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 26 )
+text = "Gênero"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientSex" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 198.0
+margin_top = 37.0
+margin_right = 210.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 27 )
+align = 1
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BloodLabel" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 211.0
+margin_top = 35.0
+margin_right = 319.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 28 )
+text = "Tipo Sanguíneo"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBlood" type="Label" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 321.0
+margin_top = 36.0
+margin_right = 346.0
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 29 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HeartRateSection" type="Control" parent="DocumentFade/UI"]
+visible = false
+anchor_right = 1.0
+margin_top = 213.0
+margin_bottom = 213.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="DocumentFade/UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = -3.0
+margin_right = 245.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 30 )
+text = "Condição Cardíaca"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="DocumentFade/UI/HeartRateSection"]
+position = Vector2( 165, 10 )
+points = PoolVector2Array( 228, 0, 81, 0 )
+width = 6.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BPMLabel" type="Label" parent="DocumentFade/UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 23.0
+margin_right = 213.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 31 )
+text = "Batimentos por minuto (BPM)"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBPM" type="Label" parent="DocumentFade/UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 215.0
+margin_top = 24.0
+margin_right = 243.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 33 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BPMClassLabel" type="Label" parent="DocumentFade/UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 36.0
+margin_right = 179.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 32 )
+text = "Classificação Cardíaca"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBPMClass" type="OptionButton" parent="DocumentFade/UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 180.0
+margin_top = 35.0
+margin_right = 298.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 34 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureSection" type="Control" parent="DocumentFade/UI"]
+visible = false
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 265.0
+margin_right = -10.0
+margin_bottom = 265.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="DocumentFade/UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -3.0
+margin_right = 97.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 35 )
+text = "Temperatura Corporal"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="DocumentFade/UI/TemperatureSection"]
+position = Vector2( 180, 9 )
+points = PoolVector2Array( 203, 0, 97, 0 )
+width = 6.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureLabel" type="Label" parent="DocumentFade/UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 21.0
+margin_right = 181.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 36 )
+text = "Temperatura do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientTemperature" type="Label" parent="DocumentFade/UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 183.0
+margin_top = 22.0
+margin_right = 230.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 37 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureClassLabel" type="Label" parent="DocumentFade/UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 36 )
+text = "Condição do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientTemperatureClass" type="OptionButton" parent="DocumentFade/UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 159.0
+margin_top = 34.0
+margin_right = 276.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 37 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VirusSection" type="Control" parent="DocumentFade/UI"]
+visible = false
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 315.0
+margin_right = -10.0
+margin_bottom = 146.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="DocumentFade/UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -3.0
+margin_right = 216.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 38 )
+text = "Doenças Presentes"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="DocumentFade/UI/VirusSection"]
+position = Vector2( 142, 10 )
+points = PoolVector2Array( 241, 0, 77, 0 )
+width = 6.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VirusLabel" type="Label" parent="DocumentFade/UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 21.0
+margin_right = 134.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 39 )
+text = "Doença Contraída"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientVirus" type="OptionButton" parent="DocumentFade/UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 135.0
+margin_top = 20.0
+margin_right = 230.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 40 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HasVirusLabel" type="Label" parent="DocumentFade/UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 36.0
+margin_right = 241.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 39 )
+text = "DOENÇA PRESENTE NO PACIENTE?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientHasVirus" type="OptionButton" parent="DocumentFade/UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 244.0
+margin_top = 35.0
+margin_right = 299.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 40 )
+flat = true
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignatureSection" type="Control" parent="DocumentFade/UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -57.0
+margin_right = -20.0
+margin_bottom = -37.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Line" type="Line2D" parent="DocumentFade/UI/SignatureSection"]
+position = Vector2( 62, -20 )
+points = PoolVector2Array( -7, 19, 245, 19 )
+width = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignatureLabel" type="Label" parent="DocumentFade/UI/SignatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -107.0
+margin_top = -6.0
+margin_right = 107.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 42 )
+text = "(Assinatura do Médico Responsável)"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="DocSendButton" type="TextureButton" parent="DocumentFade"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 122.0
+margin_top = 203.0
+margin_right = 202.0
+margin_bottom = 283.0
+texture_normal = ExtResource( 38 )
+expand = true
+
+[node name="MedicEvaluation" type="Timer" parent="DocumentFade"]
+wait_time = 3.0
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EndLevel")
 anims/BUTTONS_END_DAY_FADE = SubResource( 15 )
@@ -1744,6 +2449,28 @@ volume_db = 8.0
 stream = ExtResource( 28 )
 volume_db = -3.0
 
+[node name="PaperFlip1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 36 )
+
+[node name="PaperFlip2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 37 )
+
+[node name="Signature" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 39 )
+volume_db = -5.0
+
+[node name="Stamp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 40 )
+
+[node name="PaperSliding1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 43 )
+
+[node name="PaperSliding2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 42 )
+
+[node name="PaperSliding3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 41 )
+
 [connection signal="pressed" from="Interactables/Calendar" to="." method="_on_Calendar_pressed"]
 [connection signal="pressed" from="Interactables/CheckList" to="." method="_on_CheckList_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Continue" to="Pause" method="_on_Continue_pressed"]
@@ -1757,3 +2484,6 @@ volume_db = -3.0
 [connection signal="pressed" from="EndLevel/HBoxContainer/GoBackToMenu" to="." method="_on_GoBackToMenu_pressed"]
 [connection signal="pressed" from="EndLevel/Popup/HBoxContainer/Yes" to="." method="_on_Yes_pressed"]
 [connection signal="pressed" from="EndLevel/Popup/HBoxContainer/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="DocumentFade/DocExitButton" to="." method="_on_DocExitButton_pressed"]
+[connection signal="pressed" from="DocumentFade/DocSendButton" to="." method="_on_DocSendButton_pressed"]
+[connection signal="timeout" from="DocumentFade/MedicEvaluation" to="." method="_on_MedicEvaluation_timeout"]
