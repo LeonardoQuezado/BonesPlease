@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=2]
+[gd_scene load_steps=81 format=2]
 
 [ext_resource path="res://Source/Scripts/Game.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=2]
@@ -11,7 +11,11 @@
 [ext_resource path="res://Source/Shaders/Sharpness/SharpnessShaderMaterial.tres" type="Material" id=9]
 [ext_resource path="res://Source/Sounds/Static.wav" type="AudioStream" id=10]
 [ext_resource path="res://Source/Shaders/GrayScale/GrayScaleShaderMaterial.tres" type="Material" id=11]
+[ext_resource path="res://Source/Sounds/Bell4.wav" type="AudioStream" id=12]
+[ext_resource path="res://Source/Sounds/Bell1.wav" type="AudioStream" id=13]
 [ext_resource path="res://Source/Scripts/Pause.gd" type="Script" id=14]
+[ext_resource path="res://Source/Sounds/Bell3.wav" type="AudioStream" id=15]
+[ext_resource path="res://Source/Sounds/Bell2.wav" type="AudioStream" id=16]
 [ext_resource path="res://Source/Images/calendar.png" type="Texture" id=18]
 [ext_resource path="res://Source/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=19]
 [ext_resource path="res://Source/Images/hospital_background.png" type="Texture" id=20]
@@ -1815,6 +1819,7 @@ margin_right = 76.0
 margin_bottom = 35.0
 custom_fonts/font = SubResource( 14 )
 text = "Dia 0"
+align = 1
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2031,13 +2036,12 @@ __meta__ = {
 }
 
 [node name="PatientName" type="Label" parent="DocumentFade/UI/IDSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 130.0
 margin_top = 21.0
 margin_right = 383.0
 margin_bottom = 33.0
 custom_fonts/font = SubResource( 23 )
-align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -2056,7 +2060,7 @@ __meta__ = {
 }
 
 [node name="PatientAge" type="Label" parent="DocumentFade/UI/IDSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 128.0
 margin_top = 37.0
 margin_right = 144.0
@@ -2081,11 +2085,11 @@ __meta__ = {
 }
 
 [node name="PatientSex" type="Label" parent="DocumentFade/UI/IDSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 198.0
-margin_top = 37.0
+margin_top = 36.0
 margin_right = 210.0
-margin_bottom = 51.0
+margin_bottom = 50.0
 custom_fonts/font = SubResource( 27 )
 align = 1
 clip_text = true
@@ -2105,13 +2109,15 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientBlood" type="Label" parent="DocumentFade/UI/IDSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 321.0
-margin_top = 36.0
-margin_right = 346.0
-margin_bottom = 48.0
+[node name="PatientBlood" type="OptionButton" parent="DocumentFade/UI/IDSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 322.0
+margin_top = 33.0
+margin_right = 382.0
+margin_bottom = 51.0
 custom_fonts/font = SubResource( 29 )
+text = "AB+"
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -2160,10 +2166,10 @@ __meta__ = {
 }
 
 [node name="PatientBPM" type="Label" parent="DocumentFade/UI/HeartRateSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 215.0
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 218.0
 margin_top = 24.0
-margin_right = 243.0
+margin_right = 246.0
 margin_bottom = 36.0
 custom_fonts/font = SubResource( 33 )
 clip_text = true
@@ -2184,7 +2190,7 @@ __meta__ = {
 }
 
 [node name="PatientBPMClass" type="OptionButton" parent="DocumentFade/UI/HeartRateSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 180.0
 margin_top = 35.0
 margin_right = 298.0
@@ -2241,10 +2247,10 @@ __meta__ = {
 }
 
 [node name="PatientTemperature" type="Label" parent="DocumentFade/UI/TemperatureSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 183.0
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 186.0
 margin_top = 22.0
-margin_right = 230.0
+margin_right = 233.0
 margin_bottom = 34.0
 custom_fonts/font = SubResource( 37 )
 clip_text = true
@@ -2265,7 +2271,7 @@ __meta__ = {
 }
 
 [node name="PatientTemperatureClass" type="OptionButton" parent="DocumentFade/UI/TemperatureSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 159.0
 margin_top = 34.0
 margin_right = 276.0
@@ -2322,7 +2328,7 @@ __meta__ = {
 }
 
 [node name="PatientVirus" type="OptionButton" parent="DocumentFade/UI/VirusSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 135.0
 margin_top = 20.0
 margin_right = 230.0
@@ -2347,7 +2353,7 @@ __meta__ = {
 }
 
 [node name="PatientHasVirus" type="OptionButton" parent="DocumentFade/UI/VirusSection"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color( 1, 0, 0, 1 )
 margin_left = 244.0
 margin_top = 35.0
 margin_right = 299.0
@@ -2412,6 +2418,14 @@ expand = true
 wait_time = 3.0
 one_shot = true
 
+[node name="MedicCall" type="Timer" parent="DocumentFade"]
+wait_time = 8.0
+one_shot = true
+
+[node name="PatientTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 root_node = NodePath("../EndLevel")
 anims/BUTTONS_END_DAY_FADE = SubResource( 15 )
@@ -2471,6 +2485,22 @@ stream = ExtResource( 42 )
 [node name="PaperSliding3" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 41 )
 
+[node name="Bell1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+volume_db = -10.0
+
+[node name="Bell2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+volume_db = -5.0
+
+[node name="Bell3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+volume_db = -10.0
+
+[node name="Bell4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+volume_db = -5.0
+
 [connection signal="pressed" from="Interactables/Calendar" to="." method="_on_Calendar_pressed"]
 [connection signal="pressed" from="Interactables/CheckList" to="." method="_on_CheckList_pressed"]
 [connection signal="pressed" from="Pause/Menu/VerticalContainer/Continue" to="Pause" method="_on_Continue_pressed"]
@@ -2487,3 +2517,5 @@ stream = ExtResource( 41 )
 [connection signal="pressed" from="DocumentFade/DocExitButton" to="." method="_on_DocExitButton_pressed"]
 [connection signal="pressed" from="DocumentFade/DocSendButton" to="." method="_on_DocSendButton_pressed"]
 [connection signal="timeout" from="DocumentFade/MedicEvaluation" to="." method="_on_MedicEvaluation_timeout"]
+[connection signal="timeout" from="DocumentFade/MedicCall" to="." method="_on_MedicCall_timeout"]
+[connection signal="timeout" from="PatientTimer" to="." method="_on_PatientTimer_timeout"]

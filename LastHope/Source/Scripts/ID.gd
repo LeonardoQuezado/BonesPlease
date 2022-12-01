@@ -11,6 +11,9 @@ export(String) var patient_name
 # Exporta a variável "patient_age" (a idade do paciente).
 export(int) var patient_age
 
+# Exporta a variável "patient_sex" (o genero do paciente).
+export(String) var patient_sex
+
 # Exporta a variável "patient_blood_type" (o tipo sanguíneo do paciente).
 export(String) var patient_blood_type
 
@@ -74,7 +77,8 @@ func gen_random_persona():
 	)
 	
 	# Atribui o gênero escolhido.
-	$CardNineRect/IDControl/PatientSex.text = target_folder[0].capitalize()
+	self.patient_sex = target_folder[0].capitalize()
+	$CardNineRect/IDControl/PatientSex.text = self.patient_sex
 
 # Executada quando a cena é instanciada.
 func _ready():

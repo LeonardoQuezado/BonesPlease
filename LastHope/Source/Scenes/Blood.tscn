@@ -84,7 +84,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="BottomTempertureLine" type="Line2D" parent="UI"]
+[node name="BottomBloodLine" type="Line2D" parent="UI"]
 position = Vector2( -4.25766, 12.0004 )
 scale = Vector2( 1.02373, 0.999996 )
 points = PoolVector2Array( 59.8377, 29.9997, 137.006, 29.9997 )

@@ -29,25 +29,50 @@ export(String) var patient_virus
 # Exporta se o paciente tem a doença.
 export(bool) var patient_has_virus
 
+# Inicializa o "RNG".
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	print("TODO: Document.gd Preencher esse documento também.")
+
 # Ajusta o documento conforme a fase atual.
-func adjust_document_visible_sections(day):
-	print("TODO: Document.gd - Mudar os dias nos IFs dps.")
+func adjust_document_visible_sections(current_day, day_multiplier):	
+	# As seções, do documento principal, disponíveis para visualização.
+	var available_sections = [
+		$UI/IDSection,
+		$UI/HeartRateSection,
+		$UI/TemperatureSection,
+		$UI/VirusSection
+	]
 	
-	# Ajusta o documento conforme a fase atual.
-	if day >= 1:
-		$UI/HeartRateSection.visible = true
-	if day >= 2:
-		$UI/TemperatureSection.visible = true
-	if day >= 3:
-		$UI/VirusSection.visible = true
-	
+	# Itera sobre as seções do documento principal.
+	for i in range(0, (current_day / day_multiplier) + 1, 1):
+		if i < available_sections.size():
+			# Torna determinada seção visível.
+			available_sections[i].visible = true
+
+# Escolhe um "lugar aleatório" para carimbar.
+func select_random_stamp():
+	# Randomiza a seed do "RNG".
+	self.rng.randomize()
+
+	# Coleta todos os "Stamps" disponíveis para uso.
+	var available_stamps = []
+	for node in $UI.get_children():
+		if "Stamp" in node.name:
+			available_stamps.append(node)
+	# Retorna o "Stamp" selecionado.
+	return available_stamps[self.rng.randi() % available_stamps.size()]
+
 # Adiciona o carimbo de "Aceito".
 func add_accepted_stamp():
-	$UI/Stamp.texture = load("res://Source/Images/ApprovedStamp.png")
+	var selected_stamp = self.select_random_stamp()
+	selected_stamp.texture = load("res://Source/Images/ApprovedStamp.png")
 
 # Adiciona o carimbo de "Rejeitado".
 func add_rejected_stamp():
-	$UI/Stamp.texture = load("res://Source/Images/RejectedStamp.png")
+	var selected_stamp = self.select_random_stamp()
+	selected_stamp.texture = load("res://Source/Images/RejectedStamp.png")
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

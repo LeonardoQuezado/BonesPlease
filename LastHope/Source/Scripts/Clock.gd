@@ -14,14 +14,27 @@ onready var clock_hour = get_node("FrameControl/HorizontalClockContainer/Hour")
 # O texto que representa o separador.
 onready var clock_sep = get_node("FrameControl/HorizontalClockContainer/Sep")
 
+# Horário de começo do expediente do jogador.
+var initial_value = null
+
+# Horário de término do expediente do jogador.
+var final_value = null
+
+# Inicializa o "RNG".
+var rng = RandomNumberGenerator.new()
+
 # Incrementa o tempo do relógio.
 func _inc_clock_time():
 	# Incrementa o tempo do relógio em 1 hora.
-	self.clock_hour.text = str(int(self.clock_hour.text) + 1)
+	var next_hour = int(self.clock_hour.text) + 1
+	self.clock_hour.text = "%02d" % next_hour
 	
 	# Verifica se o tempo chegou a 00:00 e termina a fase.
-	if self.clock_hour.text == "24":
-		self.clock_hour.text = "00"
+	if int(self.clock_hour.text) > self.final_value:
+		# Impede a exibição do horário "24".
+		if self.clock_hour.text == "24":
+			self.clock_hour.text = "00"
+		# Indica que o expediente terminou.
 		self.time_up = true
 		# Para a contagem no relógio.
 		self.clock_sep_timer.stop()
@@ -50,7 +63,7 @@ func _configure_clock_text_timer():
 	# Adiciona o timer a cena.
 	self.add_child(self.clock_text_timer)
 	# Tempo de espera até a chamada de outra função.
-	self.clock_text_timer.wait_time = 5.0
+	self.clock_text_timer.wait_time = 3.0
 	# Executa repetidamente.
 	self.clock_text_timer.one_shot = false
 	# Conecta a função "_inc_clock_time" ao timer.
@@ -60,6 +73,16 @@ func _configure_clock_text_timer():
 
 # Executado quando a cena for carregada.
 func _ready():
-	self.clock_hour.text = "20"
+	# Randomiza a "Seed" do "RNG".
+	self.rng.randomize()
+	# Escolhe um horário de começo qualquer.
+	self.initial_value = self.rng.randi_range(0, 0)
+	# Horário de término será o horário de começo + 4.
+	self.final_value = self.initial_value + 4
+	
+	# Altera o horário exibido no relógio.
+	self.clock_hour.text = "%02d" % self.initial_value
+	
+	# Configura os "Timers".
 	self._configure_clock_sep_timer()
 	self._configure_clock_text_timer()

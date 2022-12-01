@@ -11,8 +11,9 @@ export(String) var patient_name
 # Exporta o tipo sanguineo do paciente.
 export(String) var patient_blood_type
 
-func _ready():
-	pass
+# Verifica se a resposta está certa.
+func is_answer_correct(blood_type):
+	return blood_type == self.patient_blood_type
 
 func _input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:

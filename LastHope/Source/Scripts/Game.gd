@@ -9,6 +9,9 @@ onready var id_scene = preload("res://Source/Scenes/ID.tscn")
 # Faz o carregamento da cena do mini-documento principal.
 onready var document_scene = preload("res://Source/Scenes/Document.tscn") 
 
+# Faz o carregamento da cena do documento do tipo sanguineo.
+onready var blood_scene = preload("res://Source/Scenes/Blood.tscn")
+
 # Faz o carregamento da cena do documento dos batimentos cardiacos.
 onready var heartrate_scene = preload("res://Source/Scenes/HeartRate.tscn")
 
@@ -17,6 +20,9 @@ onready var temperature_scene = preload("res://Source/Scenes/Temperature.tscn")
 
 # Faz o carregamento da cena do documento do virus.
 onready var virus_scene = preload("res://Source/Scenes/Virus.tscn")
+
+# Faz o carregamento do "Dropdown" do tipo sanguineo.
+onready var blood_dropdown = $DocumentFade/UI/IDSection/PatientBlood
 
 # Faz o carregamento do "Dropdown" dos batimentos cardiacos.
 onready var heart_rate_dropdown = $DocumentFade/UI/HeartRateSection/PatientBPMClass
@@ -56,13 +62,19 @@ var can_play_hospital_sound = false
 var can_play_ambience_sound = false
 
 # Indica o nível da fase atual.
-var current_day = 0
+var current_day = 18
+
+# Indica o multiplicador de fase, os divisores de tal valor adicionarão novos conteúdos ao jogo.
+var day_multiplier = 2
 
 # Quantidade de pessoas salvas.
 var saved_people_count = 0
 
 # Quantidade de pessoas mortas.
 var death_people_count = 0
+
+# Indica se o documento principal pode ser aberto/preenchido.
+var can_open_main_document = false
 
 # As combinações dos sons ambientes.
 var sounds
@@ -75,6 +87,7 @@ var rng = RandomNumberGenerator.new()
 
 func _ready():
 	print("TODO: Game.gd Arrumar o tempo de cada fase.")
+	print("TODO: Game.gd Arrumar o dia atual e/ou o multiplicador de dia quando terminar o debug.")
 	print("TODO: Game.gd Botar o manual em um dos cantos (ajuda)")
 
 	# Adiciona as opções aos dropdown.
@@ -83,12 +96,11 @@ func _ready():
 	# Toca a animação de novo dia.
 	self.begin_new_day()
 
-	# Ativa a função "clicked" em "_on_pickable_clicked" dos cartões.
-	#for node in get_tree().get_nodes_in_group("pickable"):
-	#	node.connect("clicked", self, "_on_pickable_clicked")
-
 # Adiciona as opções aos dropdown.
 func add_dropdown_itens():
+	# Tipos Sanguíneos.
+	for blood_types in ["O+", "A+", "B+", "AB+", "O-", "A-", "B-", "AB-"]:
+		self.blood_dropdown.add_item(blood_types)
 	# Classificações dos batimentos cardiacos.
 	for heart_rate_class in ["Normal", "Taquicardia", "Bradicardia"]:
 		self.heart_rate_dropdown.add_item(heart_rate_class)
@@ -179,18 +191,18 @@ func _physics_process(delta):
 # Faz com que, se clicado em algum cartão, o mesmo acompanha o movimento do mouse,
 # representando o "Drag".
 func _on_pickable_clicked(object):
-	if !held_object:
-		held_object = object
-		held_object.scale = Vector2(1.25, 1.25)
-		held_object.pickup()
+	if !self.held_object:
+		self.held_object = object
+		self.held_object.scale = Vector2(1.25, 1.25)
+		self.held_object.pickup()
 
 # Faz com que, se solto o cartão, o mesmo deixa de acompanhar o movimento do mouse,
 # representando o "Drop".
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.button_index == BUTTON_LEFT:
-		if held_object and !event.pressed:
-			held_object.drop()
-			held_object = null
+		if self.held_object and !event.pressed:
+			self.held_object.drop()
+			self.held_object = null
 
 # Toca um som aleatório de "PaperFlip".
 func play_random_paperflip_sound():
@@ -208,6 +220,14 @@ func play_random_paperslide_sound():
 	selected_paper_sound.play()
 	yield(selected_paper_sound, "finished")
 
+# Toca um som aleatório de "Bell".
+func play_random_bell_sound():
+	# Toca um som de "Bell" qualquer.
+	var random_bell_sound = [$Bell1, $Bell2, $Bell3, $Bell4]
+	var selected_bell_sound = random_bell_sound[self.rng.randi() % random_bell_sound.size()]
+	selected_bell_sound.play()
+	yield(selected_bell_sound, "finished")
+
 # Verifica se as respostas estão corretas.
 func check_answers():
 	if not $Interactables/ClockControl.time_up:
@@ -219,6 +239,7 @@ func check_answers():
 		
 		# As respostas do jogador, deve ser colocado na ordem do documento.
 		var player_answers = [
+			$DocumentFade/UI/IDSection/PatientBlood.text,
 			$DocumentFade/UI/HeartRateSection/PatientBPMClass.text,
 			$DocumentFade/UI/TemperatureSection/PatientTemperatureClass.text,
 			[$DocumentFade/UI/VirusSection/PatientVirus.text, $DocumentFade/UI/VirusSection/PatientHasVirus.text]
@@ -231,37 +252,63 @@ func check_answers():
 			var card = cards_to_verify[i]
 			var answer = player_answers[i]
 			
-			print(card)
-			print(answer)
-			
 			# Adiciona a resposta a uma outra lista.
 			cards_answers.append(card.is_answer_correct(answer))
 		
-		# Retorna "false" se existir "false" nas respostas.
-		if false in cards_answers:
-			return false
-		# Retorna "true" caso contrário.
-		else:
-			return true
+		# Retorna "True" se não houver "False" nas respostas, retorna "False" caso contrário.
+		return not false in cards_answers
+
+# Aciona o "Timer" do paciente.
+func start_patient_timer():
+	# O "Timer" não está ativo.
+	if not $PatientTimer.time_left > 0:
+		$PatientTimer.start()
+
+# Para o "Timer" do paciente.
+func stop_patient_timer():
+	# O "Timer" está ativo.
+	$PatientTimer.stop()
 
 # Altera as informações dos cartões/documentos dos pacientes.
 func respawn_cards():
 	# Destroi os cartões anteriores.
 	self.destroy_cards()
 	
-	print("TODO: Game.gd - respawn_cards() Efeito sonoro, servindo como aviso sempre que um novo paciente chegar.")
+	# Atualiza a seed do 'RNG'.
+	self.rng.randomize()
 	
-	print("TODO: Game.gd - respawn_cards() Mudar os dias nos IFs dps.")
+	# Escolhe um tempo aleatório para atender aos pacientes.
+	$PatientTimer.wait_time = self.rng.randi_range(10, 30)
 	
-	print("TODO: Game.gd - respawn_cards() botar o cartão de 'blood' como primeiro, o jogador terá que preencher o campo ID. (Sexo, Tipo Sanguineo)")
+	# Solta o documento, se estiver segurando algum.
+	if self.held_object:
+		self.held_object.drop()
+		self.held_object = null
+	
+	# Indica que pode abrir/preencher o documento principal.
+	self.can_open_main_document = true
+	
+	# Toca um som aleatório de sino, indicando que um novo paciente chegou.
+	self.play_random_bell_sound()
+	
+	# Iniciar o timer do paciente, quando acabar, um novo paciente será gerado.
+	self.start_patient_timer()
+	
 	# Ajusta os cartões a serem disponibilizados conforme o nível da fase.
 	var cards_to_spawn = [self.id_scene]
-	if self.current_day >= 1:
-		cards_to_spawn.append(self.heartrate_scene)
-	if self.current_day >= 2:
-		cards_to_spawn.append(self.temperature_scene)
-	if self.current_day >= 3:
-		cards_to_spawn.append(self.virus_scene)
+	# Os cartões disponíves a instanciação.
+	var available_cards = [
+		self.blood_scene,
+		self.heartrate_scene,
+		self.temperature_scene,
+		self.virus_scene
+	]
+	
+	# Itera sobre a divisão do "current_day" com "day_multiplier".
+	for i in range(0, (self.current_day / self.day_multiplier) + 1, 1):
+		if i < available_cards.size():
+			# Adiciona os cartões de índice 0 .. n conforme o dia.
+			cards_to_spawn.append(available_cards[i])
 	
 	# Toca um som aleatório de "PaperSliding".
 	self.play_random_paperslide_sound()
@@ -271,8 +318,11 @@ func respawn_cards():
 		# Instanceia a cena.
 		var instanced_card = card.instance()
 	
-		# Ajusta a posição da cena instanciada.
-		instanced_card.transform.origin = Vector2(self.width / 2, 0)
+		# Ajusta a posição da cena instanciada. (Na faixa de width / 1.5 e width / 3)
+		instanced_card.transform.origin = Vector2(
+			self.rng.randi_range(self.width / 1.5, self.width / 3),
+			-100
+		)
 		
 		# Torna o documento "arrastável".
 		instanced_card.connect("clicked", self, "_on_pickable_clicked")
@@ -283,9 +333,7 @@ func respawn_cards():
 func destroy_cards():
 	# Toca um som aleatório de "PaperSliding".
 	self.play_random_paperslide_sound()
-	
-	print("TODO: Game.gd - destroy_cards() Animação dos documentos indo para o lado direito ou esquerdo da tela, com a hitbox desligada e sumindo logo em seguida.")
-	
+
 	# Remove os cartões anteriores.
 	for node in $Interactables.get_children():
 		if node is RigidBody2D:
@@ -322,6 +370,10 @@ func begin_new_day():
 func end_current_day():
 	# Ignora o "spam".
 	$Interactables/ClockControl.time_up = false
+	
+	# Para os "Timers" dos pacientes.
+	self.stop_patient_timer()
+	$DocumentFade/MedicCall.stop()
 	
 	# Esconde o documento, caso esteja visível.
 	if $DocumentFade.visible:
@@ -370,24 +422,48 @@ func _on_Calendar_pressed():
 
 # Mostra o documento principal.
 func _on_CheckList_pressed():
-	# Toca um som aleatório de "PaperFlip".
-	self.play_random_paperflip_sound()
-
-	print("TODO: Game.gd - _on_CheckList_pressed() Impedir o acesso ao botão caso um mini-documento esteja presenta na tela.")
-
-	# Mostra o documento.
-	$DocumentFade.visible = true
+	# Só funciona quando o documento principal poder ser aberto/preenchido.
+	if self.can_open_main_document:
+		# Toca um som aleatório de "PaperFlip".
+		self.play_random_paperflip_sound()
 	
-	print("TODO: Game.gd - _on_CheckList_pressed() Mudar os dias nos IFs dps.")
-	print("TODO: Game.gd - _on_CheckList_pressed() Mudar a ordem dos documentos, o 'blood' será adicionado como primeiro.")
-	
-	# Esconde os outros campos conforme o dia do jogo.
-	if self.current_day >= 1:
-		$DocumentFade/UI/HeartRateSection.visible = true
-	if self.current_day >= 2:
-		$DocumentFade/UI/TemperatureSection.visible = true
-	if self.current_day >= 3:
-		$DocumentFade/UI/VirusSection.visible = true
+		# Mostra o documento.
+		$DocumentFade.visible = true
+		
+		# Preenche o documento com as outras informações não obrigatórias.
+		var cards_with_the_info = [
+			"ID",
+			"HeartRate",
+			"Temperature"
+		]
+		for i in range(0, (self.current_day / self.day_multiplier) + 1, 1):
+			if i < cards_with_the_info.size():
+				for node in $Interactables.get_children():
+					if cards_with_the_info[i] in node.name:
+						if i == 0:
+							$DocumentFade/UI/IDSection/PatientName.text = node.patient_name
+							$DocumentFade/UI/IDSection/PatientAge.text = str(node.patient_age)
+							$DocumentFade/UI/IDSection/PatientSex.text = node.patient_sex
+						elif i == 1:
+							$DocumentFade/UI/HeartRateSection/PatientBPM.text = "%d" % node.heart_bpm
+						elif i == 2:
+							$DocumentFade/UI/TemperatureSection/PatientTemperature.text = "%.1f°C" % node.temperature
+		
+		print("TODO: Game.gd - _on_CheckList_pressed() Destacar os campos a serem preenchidos.")
+		
+		# As seções, do documento principal, disponíveis para visualização.
+		var available_sections = [
+			$DocumentFade/UI/IDSection,
+			$DocumentFade/UI/HeartRateSection,
+			$DocumentFade/UI/TemperatureSection,
+			$DocumentFade/UI/VirusSection
+		]
+		
+		# Itera sobre as seções do documento principal.
+		for i in range(0, (self.current_day / self.day_multiplier) + 1, 1):
+			if i < available_sections.size():
+				# Torna determinada seção visível.
+				available_sections[i].visible = true
 
 # Esconde o documento principal.
 func _on_DocExitButton_pressed():	
@@ -401,6 +477,9 @@ func _on_DocExitButton_pressed():
 func _on_DocSendButton_pressed():
 	# Toca um som aleatório de "PaperFlip".
 	self.play_random_paperflip_sound()
+
+	# Indica que o documento principal não poder ser aberto/preenchido.
+	self.can_open_main_document = false
 
 	# Inicia o timer.
 	self.medic_evaluation_timer.start()
@@ -455,6 +534,13 @@ func _on_No_pressed():
 
 # Simula a assinatura e carimbo do médico responsável. 
 func _on_MedicEvaluation_timeout():
+	# Para os "Timers" do paciente.
+	self.stop_patient_timer()
+	$DocumentFade/MedicCall.stop()
+	
+	# Inica o "Timer" do MedicCall (chamada forçada de outro paciente.)
+	$DocumentFade/MedicCall.start()
+	
 	# Toca o som de assinatura, simula um médico assinando.
 	$Signature.play()
 	yield($Signature, "finished")
@@ -481,10 +567,13 @@ func _on_MedicEvaluation_timeout():
 		self.death_people_count += 1
 	
 	# Ajusta as seções do documento.
-	mini_document.adjust_document_visible_sections(self.current_day)
+	mini_document.adjust_document_visible_sections(self.current_day, self.day_multiplier)
 	
-	# Centraliza o documento.
-	mini_document.transform.origin = Vector2(self.width / 2, 0)
+	# Ajusta a posição da documento. (Na faixa de width / 1.5 e width / 3)
+	mini_document.transform.origin = Vector2(
+		self.rng.randi_range(self.width / 1.5, self.width / 3),
+		-100
+	)
 	
 	# Torna o documento "arrastável".
 	mini_document.connect("clicked", self, "_on_pickable_clicked")
@@ -492,5 +581,22 @@ func _on_MedicEvaluation_timeout():
 	# Adiciona-o a cena.
 	$Interactables.add_child(mini_document)
 
-	print("TODO: Game.gd - Gerar um novo paciente e alertar o jogador.")
-	print("TODO: Game.gd - Quando um novo paciente for gerado, remover o mini-documento, assim como os demais documentos. (novos serão gerados)")
+# Chama um novo paciente quando o tempo acabar.
+func _on_PatientTimer_timeout():
+	# Um documento foi enviado para avaliação, não DEVE ser gerado um novo paciente.
+	if self.can_open_main_document:
+		# Caso o documento principal esteja aberto, o mesmo é fechado a força.
+		if $DocumentFade.visible:
+			$DocumentFade.visible = false
+		
+		# Aumenta a contagem de mortes (não atendeu o paciente).
+		self.death_people_count += 1
+		
+		# Gera um novo paciente.
+		self.respawn_cards()
+	else:
+		self.stop_patient_timer()
+
+# Chama um novo paciente (chamada forçada, feita pelo médico).
+func _on_MedicCall_timeout():
+	self.respawn_cards()

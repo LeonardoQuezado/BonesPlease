@@ -571,12 +571,70 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Stamp" type="TextureRect" parent="UI"]
-margin_left = 99.0
-margin_top = 182.0
-margin_right = 149.0
-margin_bottom = 222.0
+[node name="Stamp1" type="TextureRect" parent="UI"]
+margin_left = 84.0
+margin_top = 178.0
+margin_right = 144.0
+margin_bottom = 228.0
 rect_rotation = -45.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp2" type="TextureRect" parent="UI"]
+margin_left = 54.0
+margin_top = 182.0
+margin_right = 114.0
+margin_bottom = 232.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp3" type="TextureRect" parent="UI"]
+margin_left = 28.0
+margin_top = 165.0
+margin_right = 88.0
+margin_bottom = 215.0
+rect_rotation = 45.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp4" type="TextureRect" parent="UI"]
+margin_left = 19.0
+margin_top = 165.0
+margin_right = 79.0
+margin_bottom = 215.0
+rect_rotation = -50.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp5" type="TextureRect" parent="UI"]
+margin_left = 90.0
+margin_top = 93.0
+margin_right = 150.0
+margin_bottom = 143.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp6" type="TextureRect" parent="UI"]
+margin_left = 41.0
+margin_top = 75.0
+margin_right = 101.0
+margin_bottom = 125.0
+rect_rotation = 50.0
 mouse_filter = 2
 expand = true
 __meta__ = {
