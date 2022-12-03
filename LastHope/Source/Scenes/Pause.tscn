@@ -1,0 +1,492 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://Source/Shaders/VHS/VHSShaderMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Source/Shaders/TV/TVShaderMaterial.tres" type="Material" id=2]
+[ext_resource path="res://Source/Shaders/LensDistortion/LensDistortionShaderMaterial.tres" type="Material" id=3]
+[ext_resource path="res://Source/Images/SceneChangeStatic.jpg" type="Texture" id=4]
+[ext_resource path="res://Source/Sounds/TV_Static.wav" type="AudioStream" id=5]
+[ext_resource path="res://Source/Images/BackgroundGridStatic.jpg" type="Texture" id=6]
+[ext_resource path="res://Source/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://Source/Themes/MenuTheme.tres" type="Theme" id=8]
+[ext_resource path="res://Source/Sounds/Static.wav" type="AudioStream" id=9]
+[ext_resource path="res://Source/Scripts/Pause.gd" type="Script" id=10]
+[ext_resource path="res://Source/Images/MonitorFrame.png" type="Texture" id=11]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+outline_size = 1
+outline_color = Color( 1, 0, 0, 1 )
+font_data = ExtResource( 7 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "FADE"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("TVStatic:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("StaticBg:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/path = NodePath("StaticBg:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TVStatic:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[node name="Pause" type="Node"]
+pause_mode = 2
+script = ExtResource( 10 )
+
+[node name="Foreground" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.196078, 0.196078, 0.196078, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundFocus" type="TextureRect" parent="."]
+visible = false
+modulate = Color( 1, 1, 1, 0.25098 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundAjust" type="ColorRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 0.501961 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Menu" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -139.0
+margin_top = -108.5
+margin_right = 139.0
+margin_bottom = 108.5
+mouse_filter = 0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="RichTextLabel" parent="Menu/VerticalContainer"]
+margin_right = 278.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
+theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Jogo Pausado[/center]"
+text = "Jogo Pausado"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="Menu/VerticalContainer"]
+margin_top = 44.0
+margin_right = 278.0
+margin_bottom = 58.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Continue" type="Button" parent="Menu/VerticalContainer"]
+margin_top = 62.0
+margin_right = 278.0
+margin_bottom = 99.0
+theme = ExtResource( 8 )
+text = "Continuar"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace2" type="Label" parent="Menu/VerticalContainer"]
+margin_top = 103.0
+margin_right = 278.0
+margin_bottom = 117.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Options" type="Button" parent="Menu/VerticalContainer"]
+margin_top = 121.0
+margin_right = 278.0
+margin_bottom = 158.0
+theme = ExtResource( 8 )
+text = "Opções"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace3" type="Label" parent="Menu/VerticalContainer"]
+margin_top = 162.0
+margin_right = 278.0
+margin_bottom = 176.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Exit" type="Button" parent="Menu/VerticalContainer"]
+margin_top = 180.0
+margin_right = 278.0
+margin_bottom = 217.0
+theme = ExtResource( 8 )
+text = "Voltar ao Menu"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Options" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="Options"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -74.5
+margin_top = -122.5
+margin_right = 74.5
+margin_bottom = 122.5
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="RichTextLabel" parent="Options/VerticalContainer"]
+margin_top = 36.0
+margin_right = 149.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 0, 40 )
+mouse_filter = 2
+theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Opções[/center]"
+text = "Opções"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="Options/VerticalContainer"]
+margin_top = 80.0
+margin_right = 149.0
+margin_bottom = 94.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Volume" type="Label" parent="Options/VerticalContainer"]
+margin_top = 98.0
+margin_right = 149.0
+margin_bottom = 129.0
+theme = ExtResource( 8 )
+text = "Volume"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VolumeSlider" type="HSlider" parent="Options/VerticalContainer"]
+margin_top = 133.0
+margin_right = 149.0
+margin_bottom = 149.0
+min_value = -30.0
+max_value = 0.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace2" type="Label" parent="Options/VerticalContainer"]
+margin_top = 153.0
+margin_right = 149.0
+margin_bottom = 167.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Back" type="Button" parent="Options/VerticalContainer"]
+margin_top = 171.0
+margin_right = 149.0
+margin_bottom = 208.0
+theme = ExtResource( 8 )
+text = "Voltar"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ExitPopup" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VerticalContainer" type="VBoxContainer" parent="ExitPopup"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -40.5
+margin_right = 250.0
+margin_bottom = 40.5
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="RichTextLabel" parent="ExitPopup/VerticalContainer"]
+margin_right = 500.0
+margin_bottom = 40.0
+rect_min_size = Vector2( 500, 40 )
+mouse_filter = 2
+theme = ExtResource( 8 )
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "[center]Quer mesmo sair ?[/center]"
+text = "Quer mesmo sair ?"
+scroll_active = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HorizontalContainer" type="HBoxContainer" parent="ExitPopup/VerticalContainer"]
+margin_top = 44.0
+margin_right = 500.0
+margin_bottom = 81.0
+alignment = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Yes" type="Button" parent="ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 185.0
+margin_right = 244.0
+margin_bottom = 37.0
+theme = ExtResource( 8 )
+text = "Sim"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlankVSpace1" type="Label" parent="ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 248.0
+margin_top = 11.0
+margin_right = 248.0
+margin_bottom = 25.0
+text = "	"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="No" type="Button" parent="ExitPopup/VerticalContainer/HorizontalContainer"]
+margin_left = 252.0
+margin_right = 314.0
+margin_bottom = 37.0
+theme = ExtResource( 8 )
+text = "Não"
+flat = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Shaders" type="Control" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderControl" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderBuffer" type="BackBufferCopy" parent="Shaders/VHSShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VHSShaderRect" type="ColorRect" parent="Shaders/VHSShaderControl"]
+material = ExtResource( 1 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderControl" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderBuffer" type="BackBufferCopy" parent="Shaders/LDShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LDShaderRect" type="ColorRect" parent="Shaders/LDShaderControl"]
+material = ExtResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderControl" type="Control" parent="Shaders"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderBuffer" type="BackBufferCopy" parent="Shaders/TVShaderControl"]
+copy_mode = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TVShaderRect" type="ColorRect" parent="Shaders/TVShaderControl"]
+material = ExtResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="StaticBg" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MonitorFrame" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+texture = ExtResource( 11 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/FADE = SubResource( 3 )
+anims/RESET = SubResource( 2 )
+
+[node name="TVStatic" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 5 )
+volume_db = -10.0
+
+[node name="Static" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
+stream = ExtResource( 9 )
+volume_db = -28.0
+pitch_scale = 1.05
+
+[connection signal="pressed" from="Menu/VerticalContainer/Continue" to="." method="_on_Continue_pressed"]
+[connection signal="pressed" from="Menu/VerticalContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="Menu/VerticalContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="value_changed" from="Options/VerticalContainer/VolumeSlider" to="." method="_on_VolumeSlider_value_changed"]
+[connection signal="pressed" from="Options/VerticalContainer/Back" to="." method="_on_Back_pressed"]
+[connection signal="pressed" from="ExitPopup/VerticalContainer/HorizontalContainer/Yes" to="." method="_on_Yes_pressed"]
+[connection signal="pressed" from="ExitPopup/VerticalContainer/HorizontalContainer/No" to="." method="_on_No_pressed"]

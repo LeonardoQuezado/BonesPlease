@@ -1,0 +1,159 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 10, 6.66875 )
+
+[node name="Borders" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_pivot_offset = Vector2( -506, -106 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBoxBorders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBoxTop" type="Control" parent="HitBoxBorders"]
+anchor_right = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopBorderBody" type="StaticBody2D" parent="HitBoxBorders/HitBoxTop"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TopBorderCollision" type="CollisionShape2D" parent="HitBoxBorders/HitBoxTop/TopBorderBody"]
+position = Vector2( 0, -6650 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBoxLeft" type="Control" parent="HitBoxBorders"]
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LeftBorderBody" type="StaticBody2D" parent="HitBoxBorders/HitBoxLeft"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LeftBorderCollision" type="CollisionShape2D" parent="HitBoxBorders/HitBoxLeft/LeftBorderBody"]
+position = Vector2( -9980, 0 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBoxRight" type="Control" parent="HitBoxBorders"]
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RightBorderBody" type="StaticBody2D" parent="HitBoxBorders/HitBoxRight"]
+position = Vector2( -1024, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="RightBorderCollision" type="CollisionShape2D" parent="HitBoxBorders/HitBoxRight/RightBorderBody"]
+position = Vector2( 11000, 0 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBoxBottom" type="Control" parent="HitBoxBorders"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomBorderBody" type="StaticBody2D" parent="HitBoxBorders/HitBoxBottom"]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BottomBorderCollision" type="CollisionShape2D" parent="HitBoxBorders/HitBoxBottom/BottomBorderBody"]
+position = Vector2( 0, 6651 )
+scale = Vector2( 1000, 1000 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ScreenBlackBorders" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderL" type="ColorRect" parent="ScreenBlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_bottom = 1.0
+margin_right = 9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderR" type="ColorRect" parent="ScreenBlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderB" type="ColorRect" parent="ScreenBlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BlackBorderT" type="ColorRect" parent="ScreenBlackBorders"]
+modulate = Color( 0, 0, 0, 1 )
+self_modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_bottom = 9.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_lock_": true
+}

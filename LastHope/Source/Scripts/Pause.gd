@@ -6,33 +6,6 @@ onready var menu_scene = preload("res://Source/Scenes/Menu.tscn")
 # Objeto responsável pelo controle do volume.
 var master_bus = AudioServer.get_bus_index("Master")
 
-# Carrega o 'Grayscale Shader'.
-var grayscale_shader
-
-# Carrega os objetos interagíveis.
-var interactables_control
-
-# Carrega o "Background".
-var background
-
-# Carrega os nós alvos.
-func _ready():
-	self.grayscale_shader = self.get_parent().get_node("Shaders/GrayScale")
-	self.interactables_control = self.get_parent().get_node("Interactables")
-	self.background = self.get_parent().get_node("Background")
-
-# Esconde os objetos da HUD.
-func hide_HUD_stuff():
-	self.grayscale_shader.visible = false
-	self.interactables_control.visible = false
-	self.background.visible = false
-
-# Mostra os objetos da HUD.
-func show_HUD_stuff():
-	self.grayscale_shader.visible = true
-	self.interactables_control.visible = true
-	self.background.visible = true
-
 # Toca a animação de "FADE" e espera ela terminar.
 func play_fade_animation():
 	$AnimationPlayer.play("FADE")
@@ -66,14 +39,14 @@ func _physics_process(delta):
 			$ExitPopup.visible = false
 			# Altera a cor de fundo, destacando as opções.
 			$Shaders.visible = true
-			self.hide_HUD_stuff()
+			$Foreground.visible = true
 			$BackgroundFocus.visible = true
 			$BackgroundAjust.visible = true
 			$MonitorFrame.visible = true
 			# Larga o documento atual se houver.
-			if self.get_parent().get_node(".").held_object != null:
-				self.get_parent().get_node(".").held_object.drop()
-				self.get_parent().get_node(".").held_object = null
+			#if self.get_parent().get_node(".").held_object != null:
+			#	self.get_parent().get_node(".").held_object.drop()
+			#	self.get_parent().get_node(".").held_object = null
 		else:
 			self.play_fade_animation()
 			# Despausa o jogo.
@@ -84,7 +57,7 @@ func _physics_process(delta):
 			$ExitPopup.visible = false
 			# Altera a cor de fundo, destacando o jogo.
 			$Shaders.visible = false
-			self.show_HUD_stuff()
+			$Foreground.visible = false
 			$BackgroundFocus.visible = false
 			$BackgroundAjust.visible = false
 			$MonitorFrame.visible = false
@@ -101,7 +74,7 @@ func _on_Continue_pressed():
 		$ExitPopup.visible = false
 		# Altera a cor de fundo, destacando as opções.
 		$Shaders.visible = false
-		self.show_HUD_stuff()
+		$Foreground.visible = false
 		$BackgroundFocus.visible = false
 		$BackgroundAjust.visible = false
 		$MonitorFrame.visible = false

@@ -1,39 +1,130 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Source/Images/paper.jpg" type="Texture" id=1]
 [ext_resource path="res://Source/Images/game_hospital_logo.png" type="Texture" id=2]
 [ext_resource path="res://Source/Fonts/Morgan.otf" type="DynamicFontData" id=3]
-[ext_resource path="res://Source/Themes/Document.tres" type="DynamicFont" id=4]
+[ext_resource path="res://Source/Images/send.png" type="Texture" id=4]
 [ext_resource path="res://Source/Images/clip.png" type="Texture" id=5]
-[ext_resource path="res://Source/Fonts/HighSpirited.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://Source/Sounds/PaperFlip1.wav" type="AudioStream" id=6]
 [ext_resource path="res://Source/Scripts/Document.gd" type="Script" id=7]
+[ext_resource path="res://Source/Sounds/PaperFlip2.wav" type="AudioStream" id=8]
+[ext_resource path="res://Source/Sounds/Signature.wav" type="AudioStream" id=9]
+[ext_resource path="res://Source/Sounds/Stamp.wav" type="AudioStream" id=10]
+[ext_resource path="res://Source/Sounds/PaperSliding3.wav" type="AudioStream" id=11]
+[ext_resource path="res://Source/Sounds/PaperSliding1.wav" type="AudioStream" id=12]
+[ext_resource path="res://Source/Sounds/PaperSliding2.wav" type="AudioStream" id=13]
 
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 81, 119 )
+[sub_resource type="DynamicFont" id=1]
+size = 24
+font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=2]
-size = 10
+size = 12
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 7
+size = 20
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 14
-font_data = ExtResource( 6 )
+size = 12
+font_data = ExtResource( 3 )
 
-[node name="Document" type="RigidBody2D" groups=["pickable"]]
-position = Vector2( 81, 119 )
-input_pickable = true
-mode = 2
+[sub_resource type="DynamicFont" id=5]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=15]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=16]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=17]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=18]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=19]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 20
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 12
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 10
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 10
+font_data = ExtResource( 3 )
+
+[node name="Document" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 7 )
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="HitBox" type="CollisionShape2D" parent="."]
-shape = SubResource( 1 )
+[node name="DocExitButton" type="Button" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+flat = true
 __meta__ = {
 "_edit_lock_": true
 }
@@ -44,11 +135,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -78.0
-margin_top = -115.0
-margin_right = 86.0
-margin_bottom = 123.0
-mouse_filter = 2
+margin_left = -197.0
+margin_top = -267.0
+margin_right = 209.0
+margin_bottom = 277.0
+rect_min_size = Vector2( 400, 0 )
 texture = ExtResource( 1 )
 expand = true
 __meta__ = {
@@ -60,10 +151,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -81.0
-margin_top = -119.0
-margin_right = 81.0
-margin_bottom = 119.0
+margin_left = -200.0
+margin_top = -270.0
+margin_right = 200.0
+margin_bottom = 270.0
+rect_min_size = Vector2( 400, 0 )
 texture = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
@@ -77,20 +169,19 @@ __meta__ = {
 }
 
 [node name="LineL" type="Line2D" parent="UI/Header"]
-position = Vector2( 3.20513, 1 )
-points = PoolVector2Array( 0.794872, 21, 34.7949, 21 )
-width = 4.0
+position = Vector2( 66.2051, 29 )
+points = PoolVector2Array( -58.2051, 21, 34.7949, 21 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HospitalLogo" type="TextureRect" parent="UI/Header"]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -126.0
-margin_top = 6.0
-margin_right = -96.0
-margin_bottom = 36.0
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -108.0
+margin_top = 11.0
+margin_right = -28.0
+margin_bottom = 91.0
 mouse_filter = 2
 texture = ExtResource( 2 )
 expand = true
@@ -102,11 +193,11 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 1 )
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -19.0
-margin_top = 9.0
-margin_right = 40.0
-margin_bottom = 36.0
-custom_fonts/font = SubResource( 2 )
+margin_left = -30.0
+margin_top = 20.0
+margin_right = 100.0
+margin_bottom = 79.0
+custom_fonts/font = SubResource( 1 )
 text = "Hospital Genérico"
 autowrap = true
 __meta__ = {
@@ -114,18 +205,17 @@ __meta__ = {
 }
 
 [node name="LineR" type="Line2D" parent="UI/Header"]
-position = Vector2( 3.20513, 1 )
-points = PoolVector2Array( 113.795, 21, 154.795, 21 )
-width = 4.0
+position = Vector2( 185.205, 29 )
+points = PoolVector2Array( 113.795, 21, 205.795, 21 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Clip" type="TextureRect" parent="UI/Header"]
-margin_left = 8.0
-margin_top = -6.0
-margin_right = 48.0
-margin_bottom = 34.0
+margin_left = 20.0
+margin_top = -12.0
+margin_right = 100.0
+margin_bottom = 68.0
 mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
@@ -136,7 +226,7 @@ __meta__ = {
 [node name="IntroductionSection" type="Control" parent="UI"]
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 40.0
+margin_top = 90.0
 margin_right = -10.0
 mouse_filter = 2
 __meta__ = {
@@ -145,9 +235,9 @@ __meta__ = {
 
 [node name="Introduction" type="Label" parent="UI/IntroductionSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_right = 142.0
-margin_bottom = 21.0
-custom_fonts/font = ExtResource( 4 )
+margin_right = 380.0
+margin_bottom = 65.0
+custom_fonts/font = SubResource( 2 )
 text = "Caro paciente, este documento contém todas as informações necessárias sobre suas condições físicas, mentais e dentre outras. Por favor, direcione o mesmo a um médico responsável."
 autowrap = true
 __meta__ = {
@@ -157,9 +247,9 @@ __meta__ = {
 [node name="IDSection" type="Control" parent="UI"]
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 77.0
+margin_top = 161.0
 margin_right = -10.0
-margin_bottom = 77.0
+margin_bottom = 161.0
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
@@ -178,8 +268,9 @@ __meta__ = {
 }
 
 [node name="LineID" type="Line2D" parent="UI/IDSection"]
-points = PoolVector2Array( 148, 0, 56, 0 )
-width = 1.0
+position = Vector2( 105, 8 )
+points = PoolVector2Array( 278, 0, 56, 0 )
+width = 6.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -187,10 +278,10 @@ __meta__ = {
 [node name="NameLabel" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 6.0
-margin_right = 40.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 20.0
+margin_right = 126.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 4 )
 text = "Nome do Paciente"
 __meta__ = {
 "_edit_lock_": true
@@ -198,11 +289,11 @@ __meta__ = {
 
 [node name="PatientName" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 42.0
-margin_top = 6.0
-margin_right = 148.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 130.0
+margin_top = 21.0
+margin_right = 383.0
+margin_bottom = 33.0
+custom_fonts/font = SubResource( 5 )
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -211,10 +302,10 @@ __meta__ = {
 [node name="AgeLabel" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 12.0
-margin_right = 40.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 35.0
+margin_right = 127.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 6 )
 text = "Idade do Paciente"
 __meta__ = {
 "_edit_lock_": true
@@ -222,11 +313,12 @@ __meta__ = {
 
 [node name="PatientAge" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 42.0
-margin_top = 12.0
-margin_right = 48.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 128.0
+margin_top = 37.0
+margin_right = 144.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 7 )
+align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -234,11 +326,11 @@ __meta__ = {
 
 [node name="SexLabel" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 49.0
-margin_top = 12.0
-margin_right = 67.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 145.0
+margin_top = 35.0
+margin_right = 197.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 8 )
 text = "Gênero"
 __meta__ = {
 "_edit_lock_": true
@@ -246,11 +338,12 @@ __meta__ = {
 
 [node name="PatientSex" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 68.0
-margin_top = 12.0
-margin_right = 73.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 198.0
+margin_top = 36.0
+margin_right = 210.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 9 )
+align = 1
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -258,23 +351,24 @@ __meta__ = {
 
 [node name="BloodLabel" type="Label" parent="UI/IDSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 74.0
-margin_top = 12.0
-margin_right = 109.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 211.0
+margin_top = 35.0
+margin_right = 319.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 10 )
 text = "Tipo Sanguíneo"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientBlood" type="Label" parent="UI/IDSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 111.0
-margin_top = 12.0
-margin_right = 116.0
-margin_bottom = 17.0
-custom_fonts/font = ExtResource( 4 )
+[node name="PatientBlood" type="OptionButton" parent="UI/IDSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 322.0
+margin_top = 33.0
+margin_right = 382.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 11 )
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -283,17 +377,9 @@ __meta__ = {
 [node name="HeartRateSection" type="Control" parent="UI"]
 visible = false
 anchor_right = 1.0
-margin_top = 101.0
-margin_bottom = 101.0
+margin_top = 213.0
+margin_bottom = 213.0
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="LineID" type="Line2D" parent="UI/HeartRateSection"]
-position = Vector2( 11, 1 )
-points = PoolVector2Array( 148, 0, 81, 0 )
-width = 1.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -302,10 +388,18 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 9.0
 margin_top = -3.0
-margin_right = 90.0
-margin_bottom = 6.0
-custom_fonts/font = SubResource( 3 )
+margin_right = 245.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 12 )
 text = "Condição Cardíaca"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/HeartRateSection"]
+position = Vector2( 165, 10 )
+points = PoolVector2Array( 228, 0, 81, 0 )
+width = 6.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -313,10 +407,10 @@ __meta__ = {
 [node name="BPMLabel" type="Label" parent="UI/HeartRateSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 9.0
-margin_top = 6.0
-margin_right = 49.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 23.0
+margin_right = 213.0
+margin_bottom = 37.0
+custom_fonts/font = SubResource( 13 )
 text = "Batimentos por minuto (BPM)"
 __meta__ = {
 "_edit_lock_": true
@@ -324,11 +418,11 @@ __meta__ = {
 
 [node name="PatientBPM" type="Label" parent="UI/HeartRateSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 78.0
-margin_top = 6.0
-margin_right = 87.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 218.0
+margin_top = 24.0
+margin_right = 246.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 14 )
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -337,22 +431,23 @@ __meta__ = {
 [node name="BPMClassLabel" type="Label" parent="UI/HeartRateSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = 9.0
-margin_top = 11.0
-margin_right = 64.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 36.0
+margin_right = 179.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 15 )
 text = "Classificação Cardíaca"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientBPMClass" type="Label" parent="UI/HeartRateSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 65.0
-margin_top = 11.0
-margin_right = 95.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+[node name="PatientBPMClass" type="OptionButton" parent="UI/HeartRateSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 180.0
+margin_top = 35.0
+margin_right = 298.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 16 )
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -362,18 +457,10 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 124.0
+margin_top = 265.0
 margin_right = -10.0
-margin_bottom = 124.0
+margin_bottom = 265.0
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="LineID" type="Line2D" parent="UI/TemperatureSection"]
-position = Vector2( 1, 1 )
-points = PoolVector2Array( 148, 0, 97, 0 )
-width = 1.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -384,8 +471,16 @@ margin_left = -1.0
 margin_top = -3.0
 margin_right = 97.0
 margin_bottom = 6.0
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 17 )
 text = "Temperatura Corporal"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/TemperatureSection"]
+position = Vector2( 180, 9 )
+points = PoolVector2Array( 203, 0, 97, 0 )
+width = 6.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -393,10 +488,10 @@ __meta__ = {
 [node name="TemperatureLabel" type="Label" parent="UI/TemperatureSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 6.0
-margin_right = 59.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 21.0
+margin_right = 181.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 18 )
 text = "Temperatura do Paciente"
 __meta__ = {
 "_edit_lock_": true
@@ -404,11 +499,11 @@ __meta__ = {
 
 [node name="PatientTemperature" type="Label" parent="UI/TemperatureSection"]
 modulate = Color( 0, 0, 0, 1 )
-margin_left = 61.0
-margin_top = 6.0
-margin_right = 78.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_left = 186.0
+margin_top = 22.0
+margin_right = 233.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 19 )
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -417,22 +512,23 @@ __meta__ = {
 [node name="TemperatureClassLabel" type="Label" parent="UI/TemperatureSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 11.0
-margin_right = 52.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 35.0
+margin_right = 158.0
+margin_bottom = 49.0
+custom_fonts/font = SubResource( 18 )
 text = "Condição do Paciente"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientTemperatureClass" type="Label" parent="UI/TemperatureSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 53.0
-margin_top = 11.0
-margin_right = 86.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+[node name="PatientTemperatureClass" type="OptionButton" parent="UI/TemperatureSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 159.0
+margin_top = 34.0
+margin_right = 276.0
+margin_bottom = 52.0
+custom_fonts/font = SubResource( 19 )
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -442,18 +538,10 @@ __meta__ = {
 visible = false
 anchor_right = 1.0
 margin_left = 10.0
-margin_top = 146.0
+margin_top = 315.0
 margin_right = -10.0
 margin_bottom = 146.0
 mouse_filter = 2
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="LineID" type="Line2D" parent="UI/VirusSection"]
-position = Vector2( 1, 1 )
-points = PoolVector2Array( 148, 0, 77, 0 )
-width = 1.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -462,10 +550,18 @@ __meta__ = {
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
 margin_top = -3.0
-margin_right = 76.0
-margin_bottom = 6.0
-custom_fonts/font = SubResource( 3 )
+margin_right = 216.0
+margin_bottom = 21.0
+custom_fonts/font = SubResource( 20 )
 text = "Doenças Presentes"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/VirusSection"]
+position = Vector2( 142, 10 )
+points = PoolVector2Array( 241, 0, 77, 0 )
+width = 6.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -473,22 +569,23 @@ __meta__ = {
 [node name="VirusLabel" type="Label" parent="UI/VirusSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 6.0
-margin_right = 43.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 21.0
+margin_right = 134.0
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 21 )
 text = "Doença Contraída"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientVirus" type="Label" parent="UI/VirusSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 44.0
-margin_top = 6.0
-margin_right = 78.0
-margin_bottom = 11.0
-custom_fonts/font = ExtResource( 4 )
+[node name="PatientVirus" type="OptionButton" parent="UI/VirusSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 135.0
+margin_top = 20.0
+margin_right = 230.0
+margin_bottom = 38.0
+custom_fonts/font = SubResource( 22 )
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -497,22 +594,23 @@ __meta__ = {
 [node name="HasVirusLabel" type="Label" parent="UI/VirusSection"]
 modulate = Color( 0, 0, 0, 1 )
 margin_left = -1.0
-margin_top = 11.0
-margin_right = 52.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+margin_top = 36.0
+margin_right = 241.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 21 )
 text = "DOENÇA PRESENTE NO PACIENTE?"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="PatientHasVirus" type="Label" parent="UI/VirusSection"]
-modulate = Color( 0, 0, 0, 1 )
-margin_left = 81.0
-margin_top = 11.0
-margin_right = 92.0
-margin_bottom = 16.0
-custom_fonts/font = ExtResource( 4 )
+[node name="PatientHasVirus" type="OptionButton" parent="UI/VirusSection"]
+modulate = Color( 1, 0, 0, 1 )
+margin_left = 244.0
+margin_top = 35.0
+margin_right = 299.0
+margin_bottom = 53.0
+custom_fonts/font = SubResource( 22 )
+flat = true
 clip_text = true
 __meta__ = {
 "_edit_lock_": true
@@ -523,17 +621,18 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
-margin_top = -50.0
+margin_top = -57.0
 margin_right = -20.0
-margin_bottom = -30.0
+margin_bottom = -37.0
 mouse_filter = 2
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Line" type="Line2D" parent="UI/SignatureSection"]
-points = PoolVector2Array( 0, 19, 122, 19 )
-width = 1.0
+position = Vector2( 62, -20 )
+points = PoolVector2Array( -7, 19, 245, 19 )
+width = 4.0
 __meta__ = {
 "_edit_lock_": true
 }
@@ -544,99 +643,59 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -41.5
-margin_top = 10.5
-margin_right = 41.5
-margin_bottom = 15.5
-custom_fonts/font = ExtResource( 4 )
+margin_left = -107.0
+margin_top = -6.0
+margin_right = 107.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 23 )
 text = "(Assinatura do Médico Responsável)"
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MedicSignature" type="Label" parent="UI/SignatureSection"]
-modulate = Color( 0, 0, 0, 1 )
+[node name="DocSendButton" type="TextureButton" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -58.0
-margin_top = -3.5
-margin_right = 58.0
-margin_bottom = 11.5
-custom_fonts/font = SubResource( 4 )
-text = "Médico Responsável"
-align = 1
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="Stamp1" type="TextureRect" parent="UI"]
-margin_left = 84.0
-margin_top = 178.0
-margin_right = 144.0
-margin_bottom = 228.0
-rect_rotation = -45.0
-mouse_filter = 2
+margin_left = 122.0
+margin_top = 203.0
+margin_right = 202.0
+margin_bottom = 283.0
+texture_normal = ExtResource( 4 )
 expand = true
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Stamp2" type="TextureRect" parent="UI"]
-margin_left = 54.0
-margin_top = 182.0
-margin_right = 114.0
-margin_bottom = 232.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="MedicEvaluation" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
 
-[node name="Stamp3" type="TextureRect" parent="UI"]
-margin_left = 28.0
-margin_top = 165.0
-margin_right = 88.0
-margin_bottom = 215.0
-rect_rotation = 45.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="MedicCall" type="Timer" parent="."]
+wait_time = 8.0
+one_shot = true
 
-[node name="Stamp4" type="TextureRect" parent="UI"]
-margin_left = 19.0
-margin_top = 165.0
-margin_right = 79.0
-margin_bottom = 215.0
-rect_rotation = -50.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="PaperFlip1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
 
-[node name="Stamp5" type="TextureRect" parent="UI"]
-margin_left = 90.0
-margin_top = 93.0
-margin_right = 150.0
-margin_bottom = 143.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="PaperFlip2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
 
-[node name="Stamp6" type="TextureRect" parent="UI"]
-margin_left = 41.0
-margin_top = 75.0
-margin_right = 101.0
-margin_bottom = 125.0
-rect_rotation = 50.0
-mouse_filter = 2
-expand = true
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="Signature" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+
+[node name="Stamp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+
+[node name="PaperSliding1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="PaperSliding2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 13 )
+
+[node name="PaperSliding3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[connection signal="pressed" from="DocExitButton" to="." method="_on_DocExitButton_pressed"]
+[connection signal="pressed" from="DocSendButton" to="." method="_on_DocSendButton_pressed"]
+[connection signal="timeout" from="MedicEvaluation" to="." method="_on_MedicEvaluation_timeout"]
+[connection signal="timeout" from="MedicCall" to="." method="_on_MedicCall_timeout"]

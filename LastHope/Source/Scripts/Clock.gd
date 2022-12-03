@@ -23,6 +23,29 @@ var final_value = null
 # Inicializa o "RNG".
 var rng = RandomNumberGenerator.new()
 
+# Executado quando a cena for carregada.
+func _ready():
+	self.restart_clock()
+
+# Reinicia o relógio.
+func restart_clock():
+	# Randomiza a "Seed" do "RNG".
+	self.rng.randomize()
+	# Escolhe um horário de começo qualquer.
+	self.initial_value = self.rng.randi_range(0, 19)
+	# Horário de término será o horário de começo + 4.
+	self.final_value = self.initial_value + 4
+	
+	# Indica que o expediente não terminou.
+	self.time_up = false
+	
+	# Altera o horário exibido no relógio.
+	self.clock_hour.text = "%02d" % self.initial_value
+	
+	# Configura os "Timers".
+	self._configure_clock_sep_timer()
+	self._configure_clock_text_timer()
+
 # Incrementa o tempo do relógio.
 func _inc_clock_time():
 	# Incrementa o tempo do relógio em 1 hora.
@@ -63,26 +86,10 @@ func _configure_clock_text_timer():
 	# Adiciona o timer a cena.
 	self.add_child(self.clock_text_timer)
 	# Tempo de espera até a chamada de outra função.
-	self.clock_text_timer.wait_time = 3.0
+	self.clock_text_timer.wait_time = 30.0
 	# Executa repetidamente.
 	self.clock_text_timer.one_shot = false
 	# Conecta a função "_inc_clock_time" ao timer.
 	self.clock_text_timer.connect("timeout", self, "_inc_clock_time")
 	# Inicia o timer.
 	self.clock_text_timer.start()
-
-# Executado quando a cena for carregada.
-func _ready():
-	# Randomiza a "Seed" do "RNG".
-	self.rng.randomize()
-	# Escolhe um horário de começo qualquer.
-	self.initial_value = self.rng.randi_range(0, 0)
-	# Horário de término será o horário de começo + 4.
-	self.final_value = self.initial_value + 4
-	
-	# Altera o horário exibido no relógio.
-	self.clock_hour.text = "%02d" % self.initial_value
-	
-	# Configura os "Timers".
-	self._configure_clock_sep_timer()
-	self._configure_clock_text_timer()

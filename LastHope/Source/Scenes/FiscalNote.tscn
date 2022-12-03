@@ -1,0 +1,204 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Source/Fonts/Morgan.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Source/Scripts/FiscalNote.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 45, 70 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 4
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 3
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 6
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 4
+font_data = ExtResource( 1 )
+
+[node name="FiscalNote" type="RigidBody2D" groups=["pickable"]]
+position = Vector2( 45, 70 )
+input_pickable = true
+mode = 2
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UI" type="NinePatchRect" parent="."]
+margin_left = -45.0
+margin_top = -70.0
+margin_right = 45.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 90, 140 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Background" type="ColorRect" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0.941176, 0.901961, 0.54902, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LinesSep" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 5.0
+margin_bottom = 7.0
+custom_fonts/font = SubResource( 1 )
+text = "- - - - - - - - - - - - - - - - - - - - - - - - -"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HospitalTitle" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 12.0
+margin_right = 40.0
+margin_bottom = 14.0
+custom_fonts/font = SubResource( 1 )
+text = "Hospital Genérico"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HospitalTitle2" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 68.0
+margin_top = 11.0
+margin_right = 80.0
+margin_bottom = 16.0
+custom_fonts/font = SubResource( 2 )
+text = "LTDA"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LinesSep2" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 18.0
+margin_bottom = 12.0
+custom_fonts/font = SubResource( 1 )
+text = "- - - - - - - - - - - - - - - - - - - - - - - - -"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Description" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 25.0
+margin_right = 87.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 3 )
+text = "Caro jogador, notamos que, durante seu expediente, um ou mais pacientes não foram atendidos prontamente.
+Atenciosamente."
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Value1" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 56.0
+margin_right = 87.0
+margin_bottom = 81.0
+custom_fonts/font = SubResource( 3 )
+text = "Valor da Multa..........................................$ 99,99
+Valor do Atraso.....................................R$ 99,99
+Valor da consulta do paciente.............R$ 99,99
+Mais alguma coisa aqui............................R$ 99,99
+To sem ideia kkkkk.....................................R$ 99,99
+TOME, RAPAZ, UUUUIII, DEMAIS..................R$ 99,99"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LinesSep3" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 50.0
+margin_bottom = 57.0
+custom_fonts/font = SubResource( 1 )
+text = "- - - - - - - - - - - - - - - - - - - - - - - - -"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LinesSep5" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 96.0
+margin_bottom = 103.0
+custom_fonts/font = SubResource( 1 )
+text = "- - - - - - - - - - - - - - - - - - - - - - - - -"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Value2" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 102.0
+margin_right = 87.0
+margin_bottom = 109.0
+custom_fonts/font = SubResource( 4 )
+text = "VALOR TOTAL  R$ 62,48"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Value3" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 3.0
+margin_top = 110.0
+margin_right = 87.0
+margin_bottom = 124.0
+custom_fonts/font = SubResource( 5 )
+text = "Data de Emissão...................................11/11/11
+Código serial             c2:c3:c4:c5"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LinesSep4" type="Label" parent="UI"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_right = 1.0
+margin_top = 123.0
+margin_bottom = 130.0
+custom_fonts/font = SubResource( 1 )
+text = "- - - - - - - - - - - - - - - - - - - - - - - - -"
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}

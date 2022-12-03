@@ -1,0 +1,92 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Source/Scripts/Interactables.gd" type="Script" id=1]
+[ext_resource path="res://Source/Scenes/Clock.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Source/Images/calendar.png" type="Texture" id=3]
+[ext_resource path="res://Source/Images/checklist.png" type="Texture" id=4]
+[ext_resource path="res://Source/Scenes/Document.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Source/Sounds/Bell3.wav" type="AudioStream" id=6]
+[ext_resource path="res://Source/Sounds/Bell1.wav" type="AudioStream" id=7]
+[ext_resource path="res://Source/Sounds/Bell4.wav" type="AudioStream" id=8]
+[ext_resource path="res://Source/Sounds/Bell2.wav" type="AudioStream" id=9]
+[ext_resource path="res://Source/Sounds/Printer.wav" type="AudioStream" id=10]
+
+[node name="Interactables" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Cards" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="Clock" parent="." instance=ExtResource( 2 )]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Calendar" type="TextureButton" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -114.0
+margin_top = -164.0
+margin_right = -44.0
+margin_bottom = -94.0
+texture_normal = ExtResource( 3 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Checklist" type="TextureButton" parent="."]
+visible = false
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = -112.0
+margin_right = 110.0
+margin_bottom = -22.0
+texture_normal = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Document" parent="." instance=ExtResource( 5 )]
+visible = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientTimer" type="Timer" parent="."]
+
+[node name="Bell1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 7 )
+volume_db = -10.0
+
+[node name="Bell2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -5.0
+
+[node name="Bell3" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+volume_db = -10.0
+
+[node name="Bell4" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+volume_db = -5.0
+
+[node name="Printer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+volume_db = -5.0
+
+[connection signal="pressed" from="Calendar" to="." method="_on_Calendar_pressed"]
+[connection signal="pressed" from="Checklist" to="." method="_on_Checklist_pressed"]
+[connection signal="timeout" from="PatientTimer" to="." method="_on_PatientTimer_timeout"]

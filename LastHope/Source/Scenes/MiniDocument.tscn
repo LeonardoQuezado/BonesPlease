@@ -1,0 +1,642 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Source/Scripts/MiniDocument.gd" type="Script" id=1]
+[ext_resource path="res://Source/Fonts/Morgan.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://Source/Themes/Document.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Source/Images/game_hospital_logo.png" type="Texture" id=4]
+[ext_resource path="res://Source/Fonts/HighSpirited.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://Source/Images/paper.jpg" type="Texture" id=6]
+[ext_resource path="res://Source/Images/clip.png" type="Texture" id=7]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 81, 119 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 10
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 7
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 14
+font_data = ExtResource( 5 )
+
+[node name="MiniDocument" type="RigidBody2D" groups=["pickable"]]
+position = Vector2( 81, 119 )
+input_pickable = true
+mode = 2
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BackgroundPaper" type="TextureRect" parent="."]
+modulate = Color( 1, 1, 1, 0.611765 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -78.0
+margin_top = -115.0
+margin_right = 86.0
+margin_bottom = 123.0
+mouse_filter = 2
+texture = ExtResource( 6 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="UI" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -81.0
+margin_top = -119.0
+margin_right = 81.0
+margin_bottom = 119.0
+texture = ExtResource( 6 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Header" type="Control" parent="UI"]
+anchor_right = 1.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineL" type="Line2D" parent="UI/Header"]
+position = Vector2( 3.20513, 1 )
+points = PoolVector2Array( 0.794872, 21, 34.7949, 21 )
+width = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HospitalLogo" type="TextureRect" parent="UI/Header"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -126.0
+margin_top = 6.0
+margin_right = -96.0
+margin_bottom = 36.0
+mouse_filter = 2
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UI/Header"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -19.0
+margin_top = 9.0
+margin_right = 40.0
+margin_bottom = 36.0
+custom_fonts/font = SubResource( 2 )
+text = "Hospital Genérico"
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineR" type="Line2D" parent="UI/Header"]
+position = Vector2( 3.20513, 1 )
+points = PoolVector2Array( 113.795, 21, 154.795, 21 )
+width = 4.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Clip" type="TextureRect" parent="UI/Header"]
+margin_left = 8.0
+margin_top = -6.0
+margin_right = 48.0
+margin_bottom = 34.0
+mouse_filter = 2
+texture = ExtResource( 7 )
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IntroductionSection" type="Control" parent="UI"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 40.0
+margin_right = -10.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Introduction" type="Label" parent="UI/IntroductionSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_right = 142.0
+margin_bottom = 21.0
+custom_fonts/font = ExtResource( 3 )
+text = "Caro paciente, este documento contém todas as informações necessárias sobre suas condições físicas, mentais e dentre outras. Por favor, direcione o mesmo a um médico responsável."
+autowrap = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="IDSection" type="Control" parent="UI"]
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 77.0
+margin_right = -10.0
+margin_bottom = 77.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -4.0
+margin_right = 54.0
+margin_bottom = 5.0
+custom_fonts/font = SubResource( 3 )
+text = "Identificação"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/IDSection"]
+points = PoolVector2Array( 148, 0, 56, 0 )
+width = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="NameLabel" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 6.0
+margin_right = 40.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Nome do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientName" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 42.0
+margin_top = 6.0
+margin_right = 148.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AgeLabel" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 12.0
+margin_right = 40.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+text = "Idade do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientAge" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 42.0
+margin_top = 12.0
+margin_right = 48.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SexLabel" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 49.0
+margin_top = 12.0
+margin_right = 67.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+text = "Gênero"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientSex" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 68.0
+margin_top = 12.0
+margin_right = 73.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BloodLabel" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 74.0
+margin_top = 12.0
+margin_right = 109.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+text = "Tipo Sanguíneo"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBlood" type="Label" parent="UI/IDSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 111.0
+margin_top = 12.0
+margin_right = 116.0
+margin_bottom = 17.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HeartRateSection" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+margin_top = 101.0
+margin_bottom = 101.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/HeartRateSection"]
+position = Vector2( 11, 1 )
+points = PoolVector2Array( 148, 0, 81, 0 )
+width = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = -3.0
+margin_right = 90.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "Condição Cardíaca"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BPMLabel" type="Label" parent="UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 6.0
+margin_right = 49.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Batimentos por minuto (BPM)"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBPM" type="Label" parent="UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 78.0
+margin_top = 6.0
+margin_right = 87.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="BPMClassLabel" type="Label" parent="UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 9.0
+margin_top = 11.0
+margin_right = 64.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+text = "Classificação Cardíaca"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientBPMClass" type="Label" parent="UI/HeartRateSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 65.0
+margin_top = 11.0
+margin_right = 95.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureSection" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 124.0
+margin_right = -10.0
+margin_bottom = 124.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/TemperatureSection"]
+position = Vector2( 1, 1 )
+points = PoolVector2Array( 148, 0, 97, 0 )
+width = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -3.0
+margin_right = 97.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "Temperatura Corporal"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureLabel" type="Label" parent="UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 6.0
+margin_right = 59.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Temperatura do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientTemperature" type="Label" parent="UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 61.0
+margin_top = 6.0
+margin_right = 78.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="TemperatureClassLabel" type="Label" parent="UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 11.0
+margin_right = 52.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+text = "Condição do Paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientTemperatureClass" type="Label" parent="UI/TemperatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 53.0
+margin_top = 11.0
+margin_right = 86.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VirusSection" type="Control" parent="UI"]
+visible = false
+anchor_right = 1.0
+margin_left = 10.0
+margin_top = 146.0
+margin_right = -10.0
+margin_bottom = 146.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="LineID" type="Line2D" parent="UI/VirusSection"]
+position = Vector2( 1, 1 )
+points = PoolVector2Array( 148, 0, 77, 0 )
+width = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Title" type="Label" parent="UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = -3.0
+margin_right = 76.0
+margin_bottom = 6.0
+custom_fonts/font = SubResource( 3 )
+text = "Doenças Presentes"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="VirusLabel" type="Label" parent="UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 6.0
+margin_right = 43.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+text = "Doença Contraída"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientVirus" type="Label" parent="UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 44.0
+margin_top = 6.0
+margin_right = 78.0
+margin_bottom = 11.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HasVirusLabel" type="Label" parent="UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -1.0
+margin_top = 11.0
+margin_right = 52.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+text = "DOENÇA PRESENTE NO PACIENTE?"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="PatientHasVirus" type="Label" parent="UI/VirusSection"]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 81.0
+margin_top = 11.0
+margin_right = 92.0
+margin_bottom = 16.0
+custom_fonts/font = ExtResource( 3 )
+clip_text = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignatureSection" type="Control" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -50.0
+margin_right = -20.0
+margin_bottom = -30.0
+mouse_filter = 2
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Line" type="Line2D" parent="UI/SignatureSection"]
+points = PoolVector2Array( 0, 19, 122, 19 )
+width = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SignatureLabel" type="Label" parent="UI/SignatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.5
+margin_top = 10.5
+margin_right = 41.5
+margin_bottom = 15.5
+custom_fonts/font = ExtResource( 3 )
+text = "(Assinatura do Médico Responsável)"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MedicSignature" type="Label" parent="UI/SignatureSection"]
+modulate = Color( 0, 0, 0, 1 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -58.0
+margin_top = -3.5
+margin_right = 58.0
+margin_bottom = 11.5
+custom_fonts/font = SubResource( 4 )
+text = "Médico Responsável"
+align = 1
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp1" type="TextureRect" parent="UI"]
+margin_left = 84.0
+margin_top = 178.0
+margin_right = 144.0
+margin_bottom = 228.0
+rect_rotation = -45.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp2" type="TextureRect" parent="UI"]
+margin_left = 54.0
+margin_top = 182.0
+margin_right = 114.0
+margin_bottom = 232.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp3" type="TextureRect" parent="UI"]
+margin_left = 28.0
+margin_top = 165.0
+margin_right = 88.0
+margin_bottom = 215.0
+rect_rotation = 45.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp4" type="TextureRect" parent="UI"]
+margin_left = 19.0
+margin_top = 165.0
+margin_right = 79.0
+margin_bottom = 215.0
+rect_rotation = -50.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp5" type="TextureRect" parent="UI"]
+margin_left = 90.0
+margin_top = 93.0
+margin_right = 150.0
+margin_bottom = 143.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Stamp6" type="TextureRect" parent="UI"]
+margin_left = 41.0
+margin_top = 75.0
+margin_right = 101.0
+margin_bottom = 125.0
+rect_rotation = 50.0
+mouse_filter = 2
+expand = true
+__meta__ = {
+"_edit_lock_": true
+}
