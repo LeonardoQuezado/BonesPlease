@@ -18,9 +18,6 @@ position = Vector2( 90, 50 )
 input_pickable = true
 mode = 2
 script = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 7 )

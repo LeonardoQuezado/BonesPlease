@@ -45,7 +45,7 @@ func _on_StartButton_pressed():
 	# Espera a animação terminar.
 	yield($Background/Animation/AnimationPlayer, "animation_finished")
 	# Troca para a cena do jogo principal.
-	self.get_tree().change_scene("res://Source/Scenes/Name.tscn")
+	self.get_tree().change_scene("res://Source/Scenes/Game.tscn")
 
 # Muda a cena atual para a tela de opções.
 func _on_OptionsButton_pressed():

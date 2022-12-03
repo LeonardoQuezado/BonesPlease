@@ -1,38 +1,170 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Source/Shaders/GrayScale/GrayScaleShaderMaterial.tres" type="Material" id=1]
+[ext_resource path="res://Source/Themes/MenuTheme.tres" type="Theme" id=1]
+[ext_resource path="res://Source/Images/TutorialImages/TutorialID.png" type="Texture" id=2]
+[ext_resource path="res://Source/Fonts/Montserrat-Bold.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://Source/Images/checklist.png" type="Texture" id=4]
 
-[node name="Control" type="Control"]
+[sub_resource type="DynamicFont" id=1]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 3 )
+
+[sub_resource type="DynamicFont" id=3]
+font_data = ExtResource( 3 )
+
+[node name="Tutorial" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Shaders" type="Control" parent="."]
+[node name="Background" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 39.0
+margin_bottom = 70.0
+theme = ExtResource( 1 )
+text = "Tutorial de como ser um médico competente"
+align = 1
+
+[node name="ID" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="GrayScaleShaderControl" type="Control" parent="Shaders"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="TutorialID" type="TextureRect" parent="ID"]
+margin_left = 43.0
+margin_top = 81.0
+margin_right = 306.0
+margin_bottom = 254.0
+texture = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="GrayScaleShaderBuffer" type="BackBufferCopy" parent="Shaders/GrayScaleShaderControl"]
-copy_mode = 2
+[node name="Number1" type="Label" parent="ID"]
+margin_left = 51.0
+margin_top = 94.0
+margin_right = 91.0
+margin_bottom = 125.0
+theme = ExtResource( 1 )
+text = "1."
+align = 1
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="GrayScaleShaderRect" type="ColorRect" parent="Shaders/GrayScaleShaderControl"]
-material = ExtResource( 1 )
-anchor_right = 1.0
-anchor_bottom = 1.0
-mouse_filter = 2
+[node name="SatisfactionText" type="Label" parent="ID"]
+margin_left = 368.0
+margin_top = 106.0
+margin_right = 631.0
+margin_bottom = 127.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Nível de satisfação do paciente"
 __meta__ = {
 "_edit_lock_": true
 }
+
+[node name="Line2D" type="Line2D" parent="ID"]
+points = PoolVector2Array( 283, 117, 362, 117 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="SatisfactionText2" type="Label" parent="ID"]
+margin_left = 368.0
+margin_top = 210.0
+margin_right = 631.0
+margin_bottom = 231.0
+theme = ExtResource( 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Tempo de restante para atender o paciente"
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Line2D2" type="Line2D" parent="ID"]
+position = Vector2( 0, 105 )
+points = PoolVector2Array( 266, 117, 362, 117 )
+width = 2.0
+default_color = Color( 1, 1, 1, 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Mechanics" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Number2" type="Label" parent="Mechanics"]
+margin_left = 58.0
+margin_top = 243.0
+margin_right = 78.0
+margin_bottom = 274.0
+theme = ExtResource( 1 )
+text = "2."
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MechanicsText1" type="Label" parent="Mechanics"]
+margin_left = 82.0
+margin_top = 276.0
+margin_right = 700.0
+margin_bottom = 297.0
+custom_fonts/font = SubResource( 2 )
+text = "O paciente então, irá entregar os demais documentos para você analisar."
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="MechanicsText2" type="Label" parent="Mechanics"]
+margin_left = 82.0
+margin_top = 252.0
+margin_right = 767.0
+margin_bottom = 273.0
+custom_fonts/font = SubResource( 3 )
+text = "Quando um ID for entregue para você, clique no mesmo para atender o paciente."
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Final" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Number3" type="Label" parent="Final"]
+margin_left = 58.0
+margin_top = 303.0
+margin_right = 78.0
+margin_bottom = 334.0
+theme = ExtResource( 1 )
+text = "3."
+
+[node name="MechanicsText1" type="Label" parent="Final"]
+margin_left = 82.0
+margin_top = 311.0
+margin_right = 700.0
+margin_bottom = 332.0
+custom_fonts/font = SubResource( 2 )
+text = "O paciente então, irá entregar os demais documentos para você analisar."
+
+[node name="Checklist" type="TextureRect" parent="Final"]
+margin_left = 91.0
+margin_top = 413.0
+margin_right = 131.0
+margin_bottom = 453.0
+texture = ExtResource( 4 )
+expand = true

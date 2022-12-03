@@ -9,6 +9,7 @@ export(PackedScene) var root_scene
 # Reseta as animações.
 func reset():
 	$AnimationPlayer.play("RESET")
+	$InfoPlayer.play("RESET")
 
 # Toca a animação do calendário. (Mostra o dia atual).
 func play_calendar_animation():
@@ -55,18 +56,18 @@ func play_end_level_animation():
 
 # Toca a animação informando que um paciente não foi atendido.
 func play_no_reply_animation():
-	$AnimationPlayer.play("PATIENT_NO_REPLY")
-	yield($AnimationPlayer, "animation_finished")
+	$InfoPlayer.play("PATIENT_NO_REPLY")
+	yield($InfoPlayer, "animation_finished")
 	
 # Toca a animação informando que um paciente foi salvo
 func play_saved_animation():
-	$AnimationPlayer.play("PATIENT_SAVED")
-	yield($AnimationPlayer, "animation_finished")
+	$InfoPlayer.play("PATIENT_SAVED")
+	yield($InfoPlayer, "animation_finished")
 	
 # Toca a animação informando que um paciente foi morto.
 func play_dead_animation():
-	$AnimationPlayer.play("PATIENT_DEAD")
-	yield($AnimationPlayer, "animation_finished")
+	$InfoPlayer.play("PATIENT_DEAD")
+	yield($InfoPlayer, "animation_finished")
 
 # Mostra os botões pós término de fase.
 func show_end_day_buttons():
