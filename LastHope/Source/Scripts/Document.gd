@@ -67,7 +67,7 @@ func add_dropdown_itens():
 	for temp_class in ["Normal", "Estado Febril", "Febre"]:
 		$UI/TemperatureSection/PatientTemperatureClass.add_item(temp_class)
 	# Os tipos de vírus possíveis no paciente.
-	for virus in ["AIDS", "COVID-19", "DENGUE", "HEPATITE", "VARÍOLA"]:
+	for virus in ["AIDS", "COVID-19", "DENGUE", "HEPATITE", "DIABETE"]:
 		$UI/VirusSection/PatientVirus.add_item(virus)
 	# Se o paciente está com o vírus ou não.
 	for condition in ["Sim", "Não"]:

@@ -1,8 +1,7 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Source/Scripts/Virus.gd" type="Script" id=1]
 [ext_resource path="res://Source/Images/white-texture-rounded.png" type="Texture" id=2]
-[ext_resource path="res://Source/Images/virus_icon.png" type="Texture" id=3]
 [ext_resource path="res://Source/Images/game_hospital_logo.png" type="Texture" id=4]
 [ext_resource path="res://Source/Themes/HeartRateTheme.tres" type="Theme" id=5]
 [ext_resource path="res://Source/Themes/MenuTheme.tres" type="Theme" id=6]
@@ -43,10 +42,9 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -98.0
 margin_top = -48.0
-margin_right = -28.0
-margin_bottom = 22.0
+margin_right = -38.0
+margin_bottom = 12.0
 mouse_filter = 2
-texture = ExtResource( 3 )
 expand = true
 __meta__ = {
 "_edit_lock_": true

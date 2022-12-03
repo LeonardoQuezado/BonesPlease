@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/virus_icon.png-f01c18b42070f9aaa277844fea29a15e.stex"
+path="res://.import/figado.png-667c305734edb81c9da5bcbec8e4de45.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Source/Images/virus_icon.png"
-dest_files=[ "res://.import/virus_icon.png-f01c18b42070f9aaa277844fea29a15e.stex" ]
+source_file="res://Source/Images/figado.png"
+dest_files=[ "res://.import/figado.png-667c305734edb81c9da5bcbec8e4de45.stex" ]
 
 [params]
 

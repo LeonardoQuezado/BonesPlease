@@ -6,7 +6,16 @@ signal clicked
 var held = false
 
 # Os tipos de vírus/doenças que um paciente pode contrair.
-var viruses_types = ["AIDS", "COVID-19", "DENGUE", "HEPATITE", "VARÍOLA"]
+var viruses_types = ["AIDS", "COVID-19", "DENGUE", "HEPATITE", "DIABETE"]
+
+# As imagens das doenças.
+var virus_images = [
+	"res://Source/Images/aids.png",
+	"res://Source/Images/covid.png",
+	"res://Source/Images/dengue.png",
+	"res://Source/Images/figado.png",
+	"res://Source/Images/diabete.png"
+]
 
 # Indica se o paciente está com o vírus/doença.
 var has_virus = false
@@ -20,8 +29,12 @@ var rng = RandomNumberGenerator.new()
 # Executada quando a cena é instanciada.
 func _ready():
 	self.rng.randomize()
+	# O índice da doença escolhida.
+	var virus_index = self.rng.randi() % self.viruses_types.size()
+	# Altera a imagem conforme a doença.
+	$UI/Virus.texture = load(self.virus_images[virus_index])
 	# Escolhe um tipo de vírus/doença qualquer e exibe-o.
-	$UI/PatientVirus.text = self.viruses_types[self.rng.randi() & self.viruses_types.size() - 1]
+	$UI/PatientVirus.text = self.viruses_types[virus_index]
 	# Indica se o paciente está com o vírus/doença.
 	self.has_virus = self.rng.randi() % 2 == 0
 	$UI/PatientHasVirus.pressed = self.has_virus
