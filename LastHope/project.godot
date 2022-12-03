@@ -21,6 +21,7 @@ settings/stdout/print_fps=true
 
 [display]
 
+window/size/resizable=false
 window/vsync/use_vsync=false
 
 [global]
