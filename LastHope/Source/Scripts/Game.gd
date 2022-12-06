@@ -171,6 +171,8 @@ func end_day():
 	for sound in self.selected_sounds:
 		sound.stop()
 	
+	self.held_object = null
+	
 	# Reseta as animações.
 	$Animations.reset()
 	
